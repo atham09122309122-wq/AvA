@@ -1,0 +1,6 @@
+{
+  "name": "AVA Studio",
+  "description": "Premium creative suite and professional photo editor featuring multi-layer adjustments, 35+ filters, retouching, typography, ad studio, and story design. Made by Ayham.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
