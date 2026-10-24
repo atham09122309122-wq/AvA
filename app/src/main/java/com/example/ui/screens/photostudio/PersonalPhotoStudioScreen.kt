@@ -909,7 +909,7 @@ fun PersonalPhotoStudioScreen(
                                 label = if (isAr) "التباين (Contrast)" else "Contrast",
                                 value = adjustments.contrast,
                                 range = 0.5f..2.0f,
-                                defaultValue = 1.0f,
+                                onReset = { adjustments = adjustments.copy(contrast = 1.0f) },
                                 onValueChange = {
                                     pushHistory()
                                     adjustments = adjustments.copy(contrast = it)
@@ -1044,7 +1044,7 @@ fun PersonalPhotoStudioScreen(
                                 label = if (isAr) "تشبع الألوان (Saturation)" else "Saturation",
                                 value = adjustments.saturation,
                                 range = 0f..2.0f,
-                                defaultValue = 1.0f,
+                                onReset = { adjustments = adjustments.copy(saturation = 1.0f) },
                                 onValueChange = {
                                     pushHistory()
                                     adjustments = adjustments.copy(saturation = it)
@@ -1089,7 +1089,7 @@ fun PersonalPhotoStudioScreen(
                                 onValueChange = {
                                     pushHistory()
                                     bokehIntensity = it
-                                    activeBokehBlur = if (it > 0f) BlurType.LENS else BlurType.NONE
+                                    activeBokehBlur = if (it > 0f) BlurType.BACKGROUND else BlurType.NONE
                                 }
                             )
 
@@ -1098,7 +1098,7 @@ fun PersonalPhotoStudioScreen(
                             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                                 val blurStyles = listOf(
                                     Pair("Off", BlurType.NONE),
-                                    Pair("Lens Bokeh", BlurType.LENS),
+                                    Pair("Lens Bokeh", BlurType.BACKGROUND),
                                     Pair("Radial Focus", BlurType.RADIAL),
                                     Pair("Soft Field", BlurType.GAUSSIAN)
                                 )

@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>AVA Studio</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+  <!-- Top App Bar -->
+  <header class="app-header">
+    <div class="brand-wrapper">
+      <div class="brand-logo-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 2 22 8.5 22 12 14 15.5 22 22 22 12 2"></polygon>
+        </svg>
+      </div>
+      <div class="brand-info">
+        <h1 data-i18n="app_name">AVA Studio</h1>
+        <span data-i18n="author_badge">بواسطة أيهم</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn-icon" id="langToggleBtn" title="Language">EN</button>
+      <label class="btn-icon" title="Upload Photo" style="margin:0; cursor:pointer;">
+        <input type="file" id="photoFileInput" accept="image/*" style="display:none;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="17 8 12 3 7 8"></polyline>
+          <line x1="12" y1="3" x2="12" y2="15"></line>
+        </svg>
+      </label>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+
+    <!-- Screen 1: Home View -->
+    <section id="viewHome" class="view-screen active">
+      <!-- Hero Banner -->
+      <div class="hero-card">
+        <div class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span data-i18n="app_name">AVA Studio Pro</span>
+        </div>
+        <h2 class="hero-title" data-i18n="welcome_title">استوديو الإبداع الاحترافي</h2>
+        <p class="hero-subtitle" data-i18n="welcome_sub">منصة تعديل وتصميم الصور عالية الدقة والأعمال الإعلانية بمقاييس احترافية كاملة.</p>
+        <button class="btn-primary" id="heroCreateBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          <span data-i18n="create_design">بدء تصميم جديد</span>
+        </button>
+      </div>
+
+      <!-- Quick Tools Bar -->
+      <div class="section-header">
+        <h3 class="section-title" data-i18n="quick_tools">أدوات التعديل السريع</h3>
+      </div>
+      <div class="quick-tools-scroll">
+        <div class="quick-tool-chip" data-action="enhance">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+          </svg>
+          <span data-i18n="quick_enhance">تحسين تلقائي ذكي</span>
+        </div>
+        <div class="quick-tool-chip" data-action="bw">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a10 10 0 0 1 0 20z" fill="#94A3B8"></path>
+          </svg>
+          <span data-i18n="quick_bw">أبيض وأسود درامي</span>
+        </div>
+        <div class="quick-tool-chip" data-action="teal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#06B6D4" stroke-width="2">
+            <circle cx="12" cy="12" r="9"></circle>
+          </svg>
+          <span data-i18n="quick_teal">سينمائي تركواز</span>
+        </div>
+        <div class="quick-tool-chip" data-action="glow">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2">
+            <polygon points="12 2 15 8 22 9 17 14 18 21 12 17 6 21 7 14 2 9 9 8 12 2"></polygon>
+          </svg>
+          <span data-i18n="quick_glow">توهج استوديو</span>
+        </div>
+        <div class="quick-tool-chip" data-action="vignette">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <circle cx="12" cy="12" r="3"></circle>
+          </svg>
+          <span data-i18n="quick_vignette">تظليل الحواف</span>
+        </div>
+      </div>
+
+      <!-- Main Feature Studios -->
+      <div class="section-header">
+        <h3 class="section-title">استوديوهات التصميم</h3>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card" data-dest="photo">
+          <div class="feature-icon-wrapper" style="background: linear-gradient(135deg, #8B5CF6, #6366F1);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+              <circle cx="12" cy="13" r="4"></circle>
+            </svg>
+          </div>
+          <h4 class="feature-title" data-i18n="personal_studio">استوديو الصور الشخصية</h4>
+          <p class="feature-desc" data-i18n="personal_desc">رتوش احترافي للبشرة، إضاءة استوديو، وفلاتر سينمائية نقية.</p>
+        </div>
+
+        <div class="feature-card" data-dest="ad">
+          <div class="feature-icon-wrapper" style="background: linear-gradient(135deg, #EC4899, #8B5CF6);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h4 class="feature-title" data-i18n="ad_studio">استوديو الإعلانات</h4>
+          <p class="feature-desc" data-i18n="ad_desc">إنشاء بوسترات وتصاميم ترويجية وشارات تسويقية جاهزة للنشر.</p>
+        </div>
+
+        <div class="feature-card" data-dest="story">
+          <div class="feature-icon-wrapper" style="background: linear-gradient(135deg, #06B6D4, #3B82F6);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+              <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </svg>
+          </div>
+          <h4 class="feature-title" data-i18n="story_designer">مصمم القصص</h4>
+          <p class="feature-desc" data-i18n="story_desc">قوالب 9:16 رأسية لإنستغرام وتيك توك مع نصوص وتأثيرات مميزة.</p>
+        </div>
+      </div>
+
+      <!-- Recent Projects -->
+      <div class="section-header">
+        <h3 class="section-title" data-i18n="recent_projects">مشاريعك الأخيرة</h3>
+      </div>
+      <div id="recentProjectsList"></div>
+    </section>
+
+    <!-- Screen 2: Photo Editor Studio View -->
+    <section id="viewEditor" class="view-screen">
+      <div class="editor-container">
+        <!-- Top Bar -->
+        <div class="editor-top-bar">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <button class="btn-icon" style="width:34px; height:34px;" onclick="document.querySelector('[data-target=home]').click();">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <span class="editor-title" id="editorTitle">استوديو الصور الشخصية</span>
+          </div>
+
+          <div class="editor-top-actions">
+            <button class="btn-icon" id="exportBtn" title="Export High-Res Image" style="background:var(--primary); color:white; border:none; width:auto; padding:0 14px; font-weight:700; font-size:0.85rem; border-radius:10px;">
+              <span data-i18n="export">تصدير</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Canvas Viewport -->
+        <div class="canvas-viewport">
+          <canvas id="editorCanvas"></canvas>
+
+          <!-- Floating Compare and Fit Controls -->
+          <div class="canvas-floating-controls">
+            <button class="floating-btn" id="compareBtn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="12" y1="2" x2="12" y2="22"></line>
+                <path d="M19 12H5"></path>
+              </svg>
+              <span data-i18n="compare">قبل / بعد</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Active Tool Setting Drawer -->
+        <div class="editor-panel-controls" id="toolDrawerPanel"></div>
+
+        <!-- Bottom Tool Category Tabs -->
+        <div class="editor-bottom-bar">
+          <button class="tool-tab-btn active" data-tool="adjust">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span data-i18n="adjust">تعديل</span>
+          </button>
+          <button class="tool-tab-btn" data-tool="filters">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+            <span data-i18n="filters">فلاتر</span>
+          </button>
+          <button class="tool-tab-btn" data-tool="retouch">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+            <span data-i18n="retouch">رتوش</span>
+          </button>
+          <button class="tool-tab-btn" data-tool="color">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"></path></svg>
+            <span data-i18n="color">ألوان</span>
+          </button>
+          <button class="tool-tab-btn" data-tool="lighting">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <span data-i18n="lighting">إضاءة</span>
+          </button>
+          <button class="tool-tab-btn" data-tool="details">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            <span data-i18n="details">تفاصيل</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3: Ad Studio View -->
+    <section id="viewAdStudio" class="view-screen">
+      <div class="section-header">
+        <h3 class="section-title" data-i18n="ad_studio">استوديو الإعلانات</h3>
+      </div>
+      <div style="background:var(--bg-card); padding:16px; border-radius:16px; border:1px solid var(--border-subtle); margin-bottom:16px;">
+        <div style="margin-bottom:10px;">
+          <label style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:4px;" data-i18n="ad_title_input">عنوان الإعلان</label>
+          <input type="text" id="adHeadlineInput" value="عرض الصيف الحصري" style="width:100%; padding:10px; background:#110F18; border:1px solid var(--border-subtle); border-radius:8px; color:white; font-size:0.9rem;">
+        </div>
+        <div style="margin-bottom:10px;">
+          <label style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:4px;" data-i18n="ad_sub_input">النص الترويجي</label>
+          <input type="text" id="adSublineInput" value="خصم يصل إلى 50% على جميع المنتجات الفاخرة" style="width:100%; padding:10px; background:#110F18; border:1px solid var(--border-subtle); border-radius:8px; color:white; font-size:0.9rem;">
+        </div>
+        <div style="display:flex; gap:10px; margin-bottom:12px;">
+          <div style="flex:1;">
+            <label style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:4px;" data-i18n="ad_badge_input">نص الشارة</label>
+            <input type="text" id="adBadgeInput" value="خصم 50%" style="width:100%; padding:10px; background:#110F18; border:1px solid var(--border-subtle); border-radius:8px; color:white; font-size:0.9rem;">
+          </div>
+          <div style="flex:1;">
+            <label style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:4px;" data-i18n="ad_cta_input">زر الإجراء</label>
+            <input type="text" id="adCtaInput" value="تسوق الآن" style="width:100%; padding:10px; background:#110F18; border:1px solid var(--border-subtle); border-radius:8px; color:white; font-size:0.9rem;">
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:center; margin-bottom:16px;">
+        <canvas id="adCanvas" style="width:100%; max-width:400px; aspect-ratio:1/1; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.5);"></canvas>
+      </div>
+    </section>
+
+    <!-- Screen 4: Story Designer View -->
+    <section id="viewStoryDesigner" class="view-screen">
+      <div class="section-header">
+        <h3 class="section-title" data-i18n="story_designer">مصمم القصص 9:16</h3>
+      </div>
+      <div style="display:flex; justify-content:center; margin-bottom:16px;">
+        <canvas id="storyCanvas" style="width:100%; max-width:320px; aspect-ratio:9/16; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.5);"></canvas>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- App Bottom Navigation Bar -->
+  <nav class="app-bottom-nav">
+    <button class="nav-item active" data-target="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      <span>الرئيسية</span>
+    </button>
+    <button class="nav-item" data-target="editor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+        <circle cx="12" cy="13" r="4"></circle>
+      </svg>
+      <span>استوديو الصور</span>
+    </button>
+    <button class="nav-item" data-target="adStudio">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      </svg>
+      <span>الإعلانات</span>
+    </button>
+    <button class="nav-item" data-target="storyDesigner">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+        <line x1="12" y1="18" x2="12.01" y2="18"></line>
+      </svg>
+      <span>القصص</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div id="toastNotice" class="toast-notice"></div>
+
+  <script src="./js/app.js"></script>
+</body>
+</html>
