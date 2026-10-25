@@ -21,11 +21,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material.icons.automirrored.filled.Chat
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.AdminPanelSettings
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.MonetizationOn
 import androidx.compose.material.icons.filled.Person
@@ -60,11 +62,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.model.CharacterEntity
 import com.example.data.model.ProjectEntity
 import com.example.ui.components.BrandSignatureBadge
+import androidx.compose.ui.graphics.SolidColor
 import com.example.ui.theme.AvaBlack
 import com.example.ui.theme.AvaCard
 import com.example.ui.theme.AvaCardBorder
@@ -73,6 +77,7 @@ import com.example.ui.theme.AvaGold
 import com.example.ui.theme.AvaPurpleContainer
 import com.example.ui.theme.AvaPurpleLight
 import com.example.ui.theme.AvaPurplePrimary
+import com.example.ui.theme.AvaSuccess
 import com.example.ui.theme.AvaSurface
 import com.example.ui.theme.AvaTextPrimary
 import com.example.ui.theme.AvaTextSecondary
@@ -211,10 +216,10 @@ fun ProfileScreen(
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Display Name with Verified & Founder Badges
+                // Display Name with Verified, Founder, and Email Badges
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = user?.displayName ?: "Creator",
+                        text = user?.displayName ?: if (isAr) "زائر (غير مسجل)" else "Guest User",
                         color = AvaTextPrimary,
                         fontSize = 20.sp,
                         fontWeight = FontWeight.Bold
@@ -245,6 +250,23 @@ fun ProfileScreen(
                             )
                         }
                     }
+                    if (user?.isEmailVerified == true) {
+                        Spacer(modifier = Modifier.width(6.dp))
+                        Box(
+                            modifier = Modifier
+                                .clip(RoundedCornerShape(6.dp))
+                                .background(AvaSuccess.copy(alpha = 0.2f))
+                                .border(1.dp, AvaSuccess.copy(alpha = 0.5f), RoundedCornerShape(6.dp))
+                                .padding(horizontal = 6.dp, vertical = 2.dp)
+                        ) {
+                            Text(
+                                text = if (isAr) "بريد مؤكد ✓" else "Verified ✓",
+                                color = AvaSuccess,
+                                fontSize = 9.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                        }
+                    }
                 }
 
                 Text(
@@ -264,7 +286,96 @@ fun ProfileScreen(
                     lineHeight = 18.sp
                 )
 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(8.dp))
+
+                // Guest banner or Email verification reminder
+                if (user == null) {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 8.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = AvaCard),
+                        border = CardDefaults.outlinedCardBorder().copy(brush = Brush.horizontalGradient(listOf(AvaPurplePrimary, Color(0xFF4C1D95))))
+                    ) {
+                        Column(
+                            modifier = Modifier.padding(14.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally
+                        ) {
+                            Text(
+                                text = if (isAr) "أنت تستخدم التطبيق كزائر" else "Browsing as Guest",
+                                color = AvaTextPrimary,
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = if (isAr) "سجّل الدخول للوصول إلى مشاريعك، وتأكيد هويتك، والتمتع بمزايا الحساب الآمن."
+                                else "Sign in to secure your designs, customize your profile, and access personal features.",
+                                color = AvaTextSecondary,
+                                fontSize = 11.sp,
+                                textAlign = TextAlign.Center
+                            )
+                            Spacer(modifier = Modifier.height(10.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                Button(
+                                    onClick = { viewModel.navigateTo(AppScreen.LOGIN) },
+                                    modifier = Modifier.weight(1f).height(38.dp),
+                                    colors = ButtonDefaults.buttonColors(containerColor = AvaPurplePrimary)
+                                ) {
+                                    Text(if (isAr) "تسجيل الدخول" else "Sign In", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                                }
+                                OutlinedButton(
+                                    onClick = { viewModel.navigateTo(AppScreen.REGISTER) },
+                                    modifier = Modifier.weight(1f).height(38.dp),
+                                    colors = ButtonDefaults.outlinedButtonColors(contentColor = AvaTextPrimary)
+                                ) {
+                                    Text(if (isAr) "حساب جديد" else "Register", color = AvaTextPrimary, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                                }
+                            }
+                        }
+                    }
+                } else if (!user!!.isEmailVerified) {
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { viewModel.navigateTo(AppScreen.EMAIL_VERIFICATION) }
+                            .padding(vertical = 8.dp),
+                        shape = RoundedCornerShape(12.dp),
+                        colors = CardDefaults.cardColors(containerColor = Color(0xFF332008)),
+                        border = CardDefaults.outlinedCardBorder().copy(brush = SolidColor(Color(0xFFF59E0B)))
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        ) {
+                            Row(modifier = Modifier.weight(1f), verticalAlignment = Alignment.CenterVertically) {
+                                Icon(imageVector = Icons.Default.Email, contentDescription = null, tint = Color(0xFFF59E0B), modifier = Modifier.size(22.dp))
+                                Spacer(modifier = Modifier.width(10.dp))
+                                Column {
+                                    Text(
+                                        text = if (isAr) "البريد الإلكتروني بانتظار التأكيد" else "Email Pending Verification",
+                                        color = Color(0xFFF59E0B),
+                                        fontSize = 12.sp,
+                                        fontWeight = FontWeight.Bold
+                                    )
+                                    Text(
+                                        text = if (isAr) "اضغط هنا لإدخال رمز التحقق المكون من 6 أرقام" else "Tap here to enter your 6-digit confirmation code",
+                                        color = AvaTextSecondary,
+                                        fontSize = 11.sp
+                                    )
+                                }
+                            }
+                            Icon(imageVector = Icons.AutoMirrored.Filled.ArrowForward, contentDescription = null, tint = Color(0xFFF59E0B), modifier = Modifier.size(16.dp))
+                        }
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
 
                 // Followers & Following Clickable Row
                 Row(
@@ -490,11 +601,12 @@ fun ProfileScreen(
         // Tab Content
         when (selectedTabIndex) {
             0, 1 -> {
-                // Designs & Photos
+                // Designs & Photos with strict user isolation
+                val currentUserId = user?.id ?: "local_creator"
                 val filteredProjects = if (selectedTabIndex == 1) {
-                    projects.filter { it.projectType == "personal_photo" }
+                    projects.filter { it.userId == currentUserId && it.projectType == "personal_photo" }
                 } else {
-                    projects
+                    projects.filter { it.userId == currentUserId }
                 }
 
                 if (filteredProjects.isEmpty()) {

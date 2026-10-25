@@ -57,7 +57,8 @@ enum class AppScreen {
     LANGUAGE_SETTINGS,
     LOGIN,
     REGISTER,
-    FORGOT_PASSWORD
+    FORGOT_PASSWORD,
+    EMAIL_VERIFICATION
 }
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {

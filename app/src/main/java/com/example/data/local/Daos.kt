@@ -64,6 +64,21 @@ interface UserDao {
     @Query("UPDATE users SET followingCount = followingCount + :delta WHERE id = :userId")
     suspend fun updateFollowing(userId: String, delta: Int)
 
+    @Query("UPDATE users SET passwordHash = :newPasswordHash WHERE id = :userId")
+    suspend fun updatePassword(userId: String, newPasswordHash: String)
+
+    @Query("UPDATE users SET isEmailVerified = :verified, emailVerificationCode = NULL WHERE id = :userId")
+    suspend fun setEmailVerified(userId: String, verified: Boolean)
+
+    @Query("UPDATE users SET emailVerificationCode = :code WHERE id = :userId")
+    suspend fun setVerificationCode(userId: String, code: String?)
+
+    @Query("UPDATE users SET resetToken = :token, resetTokenExpiry = :expiry WHERE id = :userId")
+    suspend fun setResetToken(userId: String, token: String?, expiry: Long)
+
+    @Query("UPDATE users SET passwordHash = :newPasswordHash, resetToken = NULL, resetTokenExpiry = 0 WHERE id = :userId")
+    suspend fun resetPassword(userId: String, newPasswordHash: String)
+
     @Query("DELETE FROM users WHERE id = :userId")
     suspend fun deleteUser(userId: String)
 }
@@ -201,6 +216,9 @@ interface ProjectDao {
 
     @Query("DELETE FROM projects WHERE id = :id")
     suspend fun deleteProject(id: String)
+
+    @Query("DELETE FROM projects WHERE userId = :userId")
+    suspend fun deleteProjectsByUserId(userId: String)
 }
 
 @Dao

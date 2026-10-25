@@ -21,6 +21,10 @@ data class UserEntity(
     val isFounder: Boolean = false,
     val followersCount: Int = 0,
     val followingCount: Int = 0,
+    val isEmailVerified: Boolean = false,
+    val emailVerificationCode: String? = null,
+    val resetToken: String? = null,
+    val resetTokenExpiry: Long = 0L,
     val createdAt: Long = System.currentTimeMillis()
 )
 

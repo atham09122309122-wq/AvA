@@ -103,7 +103,65 @@
       ad_sub_input: 'النص الترويجي',
       ad_badge_input: 'نص الشارة',
       ad_cta_input: 'زر الإجراء',
-      export_success: 'تم حفظ الصورة بنجاح في جهازك'
+      export_success: 'تم حفظ الصورة بنجاح في جهازك',
+      auth_welcome: 'مرحباً بك في AVA',
+      auth_welcome_sub: 'استوديو التصميم والإبداع الفاخر',
+      login: 'تسجيل الدخول',
+      register: 'إنشاء حساب',
+      email: 'البريد الإلكتروني',
+      password: 'كلمة المرور',
+      forgot_password: 'نسيت كلمة المرور؟',
+      sign_in: 'تسجيل الدخول',
+      display_name: 'الاسم الظاهر',
+      username: 'اسم المستخدم (فريد)',
+      confirm_password: 'تأكيد كلمة المرور',
+      agree_terms: 'أوافق على شروط الاستخدام وسياسة الخصوصية',
+      create_account: 'إنشاء الحساب',
+      continue_guest: 'المتابعة كضيف',
+      verify_email_title: 'تأكيد البريد الإلكتروني',
+      verify_btn: 'تأكيد الرمز',
+      resend_code: 'إعادة إرسال الرمز',
+      back_to_login: 'العودة لتسجيل الدخول',
+      reset_pass_title: 'استعادة كلمة المرور',
+      reset_pass_sub: 'أدخل بريدك الإلكتروني لإرسال رمز إعادة التعيين',
+      send_code: 'إرسال رمز التحقق',
+      verification_code: 'رمز التحقق السداسي',
+      new_password: 'كلمة المرور الجديدة',
+      update_password: 'حفظ كلمة المرور الجديدة',
+      projects: 'المشاريع',
+      coins: 'الرصيد',
+      followers: 'المتابعون',
+      edit_profile: 'تعديل الملف',
+      settings: 'الإعدادات',
+      my_creations: 'أعمالك وتصاميمك المحفوظة',
+      settings_title: 'إعدادات الحساب والخصوصية',
+      account_security: 'الأمان والحساب',
+      change_password: 'تغيير كلمة المرور',
+      change_password_desc: 'تحديث كلمة السر وحماية الحساب',
+      preferences: 'التفضيلات',
+      app_language: 'لغة التطبيق',
+      session_management: 'إدارة الجلسة',
+      logout: 'تسجيل الخروج',
+      logout_desc: 'إنهاء الجلسة على هذا الجهاز',
+      delete_account: 'حذف الحساب نهائياً',
+      delete_account_desc: 'مسح جميع المشاريع والبيانات بشكل كامل',
+      bio: 'النبذة التعريفية',
+      save_changes: 'حفظ التعديلات',
+      current_password: 'كلمة المرور الحالية',
+      confirm_new_password: 'تأكيد كلمة المرور الجديدة',
+      confirm_change: 'تأكيد التغيير',
+      delete_account_confirm_title: 'حذف الحساب نهائياً؟',
+      delete_account_warn: 'سيؤدي هذا الإجراء إلى مسح حسابك وكافة أعمالك ومشاريعك المحفوظة نهائياً من قاعدة البيانات المحلية. لن تتمكن من استرجاع أي بيانات بعد الحذف.',
+      confirm_delete: 'نعم، حذف الحساب نهائياً',
+      cancel: 'إلغاء',
+      nav_home: 'الرئيسية',
+      nav_editor: 'استوديو الصور',
+      nav_ads: 'الإعلانات',
+      nav_stories: 'القصص',
+      nav_profile: 'حسابي',
+      or_continue_with: 'أو المتابعة عبر',
+      continue_google: 'المتابعة باستخدام Google',
+      continue_apple: 'المتابعة باستخدام Apple'
     },
     en: {
       app_name: 'AVA Studio',
@@ -159,7 +217,65 @@
       ad_sub_input: 'Promo Subtitle',
       ad_badge_input: 'Badge Text',
       ad_cta_input: 'Call To Action',
-      export_success: 'Image saved to your device'
+      export_success: 'Image saved to your device',
+      auth_welcome: 'Welcome to AVA',
+      auth_welcome_sub: 'High-end design & creative suite',
+      login: 'Sign In',
+      register: 'Register',
+      email: 'Email Address',
+      password: 'Password',
+      forgot_password: 'Forgot Password?',
+      sign_in: 'Sign In',
+      display_name: 'Display Name',
+      username: 'Unique Username',
+      confirm_password: 'Confirm Password',
+      agree_terms: 'I agree to the Terms of Service & Privacy Policy',
+      create_account: 'Create Account',
+      continue_guest: 'Continue as Guest',
+      verify_email_title: 'Email Verification',
+      verify_btn: 'Verify Code',
+      resend_code: 'Resend Code',
+      back_to_login: 'Back to Sign In',
+      reset_pass_title: 'Reset Password',
+      reset_pass_sub: 'Enter your email to receive a 6-digit reset code',
+      send_code: 'Send Verification Code',
+      verification_code: '6-Digit Verification Code',
+      new_password: 'New Password',
+      update_password: 'Save New Password',
+      projects: 'Projects',
+      coins: 'Coins',
+      followers: 'Followers',
+      edit_profile: 'Edit Profile',
+      settings: 'Settings',
+      my_creations: 'Your Saved Projects',
+      settings_title: 'Account & Privacy Settings',
+      account_security: 'Security & Account',
+      change_password: 'Change Password',
+      change_password_desc: 'Update password & secure account',
+      preferences: 'Preferences',
+      app_language: 'App Language',
+      session_management: 'Session Management',
+      logout: 'Log Out',
+      logout_desc: 'End session on this device',
+      delete_account: 'Delete Account Permanently',
+      delete_account_desc: 'Erase all projects and data completely',
+      bio: 'Bio',
+      save_changes: 'Save Changes',
+      current_password: 'Current Password',
+      confirm_new_password: 'Confirm New Password',
+      confirm_change: 'Confirm Change',
+      delete_account_confirm_title: 'Delete Account Permanently?',
+      delete_account_warn: 'This will erase your account and all saved projects permanently from the local database. This cannot be undone.',
+      confirm_delete: 'Yes, Delete Account Permanently',
+      cancel: 'Cancel',
+      nav_home: 'Home',
+      nav_editor: 'Photo Studio',
+      nav_ads: 'Ads',
+      nav_stories: 'Stories',
+      nav_profile: 'Profile',
+      or_continue_with: 'Or continue with',
+      continue_google: 'Continue with Google',
+      continue_apple: 'Continue with Apple'
     }
   };
 
@@ -190,24 +306,33 @@
   // DOM Elements cache
   let elements = {};
 
-  function init() {
+  async function init() {
     setupDOMElements();
     setupCanvas();
+    await AuthManager.init();
     setupEventListeners();
+    setupAuthEventListeners();
     updateLocalization();
     loadSampleArtwork();
     renderRecentProjects();
+    renderTopUserPill();
   }
 
   function setupDOMElements() {
     elements = {
       body: document.body,
       langBtn: document.getElementById('langToggleBtn'),
+      topUserPillContainer: document.getElementById('topUserPillContainer'),
+      navProfileBtn: document.getElementById('navProfileBtn'),
+      navProfileLabel: document.getElementById('navProfileLabel'),
       views: {
         home: document.getElementById('viewHome'),
         editor: document.getElementById('viewEditor'),
         adStudio: document.getElementById('viewAdStudio'),
-        storyDesigner: document.getElementById('viewStoryDesigner')
+        storyDesigner: document.getElementById('viewStoryDesigner'),
+        auth: document.getElementById('viewAuth'),
+        profile: document.getElementById('viewProfile'),
+        settings: document.getElementById('viewSettings')
       },
       canvas: document.getElementById('editorCanvas'),
       fileInput: document.getElementById('photoFileInput'),
@@ -220,7 +345,74 @@
       compareBtn: document.getElementById('compareBtn'),
       fitBtn: document.getElementById('fitBtn'),
       exportBtn: document.getElementById('exportBtn'),
-      editorTitle: document.getElementById('editorTitle')
+      editorTitle: document.getElementById('editorTitle'),
+      // Auth & Profile Elements
+      authMainBox: document.getElementById('authMainBox'),
+      authVerifyBox: document.getElementById('authVerifyBox'),
+      authForgotBox: document.getElementById('authForgotBox'),
+      authAlertBox: document.getElementById('authAlertBox'),
+      tabBtnLogin: document.getElementById('tabBtnLogin'),
+      tabBtnRegister: document.getElementById('tabBtnRegister'),
+      loginForm: document.getElementById('loginForm'),
+      registerForm: document.getElementById('registerForm'),
+      loginEmail: document.getElementById('loginEmail'),
+      loginPassword: document.getElementById('loginPassword'),
+      regDisplayName: document.getElementById('regDisplayName'),
+      regUsername: document.getElementById('regUsername'),
+      regEmail: document.getElementById('regEmail'),
+      regPassword: document.getElementById('regPassword'),
+      regPasswordConfirm: document.getElementById('regPasswordConfirm'),
+      regTermsCheck: document.getElementById('regTermsCheck'),
+      forgotPassLink: document.getElementById('forgotPassLink'),
+      guestContinueBtn: document.getElementById('guestContinueBtn'),
+      socialGoogleBtn: document.getElementById('socialGoogleBtn'),
+      socialAppleBtn: document.getElementById('socialAppleBtn'),
+      verifyEmailTarget: document.getElementById('verifyEmailTarget'),
+      verifyAlertBox: document.getElementById('verifyAlertBox'),
+      verifyConfirmBtn: document.getElementById('verifyConfirmBtn'),
+      verifyResendBtn: document.getElementById('verifyResendBtn'),
+      verifyBackBtn: document.getElementById('verifyBackBtn'),
+      codeDigitInputs: document.querySelectorAll('.code-digit-input'),
+      forgotAlertBox: document.getElementById('forgotAlertBox'),
+      forgotStep1: document.getElementById('forgotStep1'),
+      forgotStep2: document.getElementById('forgotStep2'),
+      forgotEmail: document.getElementById('forgotEmail'),
+      forgotSendBtn: document.getElementById('forgotSendBtn'),
+      forgotCodeInput: document.getElementById('forgotCodeInput'),
+      forgotNewPass: document.getElementById('forgotNewPass'),
+      forgotResetBtn: document.getElementById('forgotResetBtn'),
+      forgotBackBtn: document.getElementById('forgotBackBtn'),
+      profileAvatar: document.getElementById('profileAvatar'),
+      profileAvatarText: document.getElementById('profileAvatarText'),
+      profileDisplayName: document.getElementById('profileDisplayName'),
+      profileUsername: document.getElementById('profileUsername'),
+      profileBio: document.getElementById('profileBio'),
+      profileFounderBadge: document.getElementById('profileFounderBadge'),
+      profileVerifiedBadge: document.getElementById('profileVerifiedBadge'),
+      statProjectsCount: document.getElementById('statProjectsCount'),
+      statCoinsCount: document.getElementById('statCoinsCount'),
+      statFollowersCount: document.getElementById('statFollowersCount'),
+      editProfileBtn: document.getElementById('editProfileBtn'),
+      openSettingsBtn: document.getElementById('openSettingsBtn'),
+      userProjectsGrid: document.getElementById('userProjectsGrid'),
+      settingsBackBtn: document.getElementById('settingsBackBtn'),
+      changePasswordSettingBtn: document.getElementById('changePasswordSettingBtn'),
+      toggleLangSettingBtn: document.getElementById('toggleLangSettingBtn'),
+      currentLangLabel: document.getElementById('currentLangLabel'),
+      logoutSettingBtn: document.getElementById('logoutSettingBtn'),
+      deleteAccountSettingBtn: document.getElementById('deleteAccountSettingBtn'),
+      editProfileModal: document.getElementById('editProfileModal'),
+      editDisplayNameInput: document.getElementById('editDisplayNameInput'),
+      editBioInput: document.getElementById('editBioInput'),
+      saveProfileChangesBtn: document.getElementById('saveProfileChangesBtn'),
+      changePasswordModal: document.getElementById('changePasswordModal'),
+      changePasswordAlert: document.getElementById('changePasswordAlert'),
+      currentPassInput: document.getElementById('currentPassInput'),
+      newPassInput: document.getElementById('newPassInput'),
+      confirmNewPassInput: document.getElementById('confirmNewPassInput'),
+      submitChangePassBtn: document.getElementById('submitChangePassBtn'),
+      deleteAccountModal: document.getElementById('deleteAccountModal'),
+      confirmDeleteAccountBtn: document.getElementById('confirmDeleteAccountBtn')
     };
   }
 
@@ -230,14 +422,12 @@
     state.ctx = elements.canvas.getContext('2d', { willReadFrequently: true });
   }
 
-  // Load an initial elegant aesthetic sample image so the user immediately has content
   function loadSampleArtwork() {
     const defaultCanvas = document.createElement('canvas');
     defaultCanvas.width = 1080;
     defaultCanvas.height = 1350;
     const ctx = defaultCanvas.getContext('2d');
 
-    // Draw rich gradient background
     const grad = ctx.createLinearGradient(0, 0, 1080, 1350);
     grad.addColorStop(0, '#1E1233');
     grad.addColorStop(0.5, '#2D1B4E');
@@ -245,7 +435,6 @@
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, 1080, 1350);
 
-    // Subtle aesthetic light circle
     const glow = ctx.createRadialGradient(540, 500, 50, 540, 500, 450);
     glow.addColorStop(0, 'rgba(139, 92, 246, 0.45)');
     glow.addColorStop(0.7, 'rgba(99, 102, 241, 0.15)');
@@ -253,13 +442,11 @@
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, 1080, 1350);
 
-    // Draw geometric stylish art shapes
     ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
     ctx.beginPath();
     ctx.arc(540, 520, 280, 0, Math.PI * 2);
     ctx.fill();
 
-    // Central elegant monogram
     ctx.fillStyle = '#FFFFFF';
     ctx.textAlign = 'center';
     ctx.font = 'bold 92px sans-serif';
@@ -299,7 +486,6 @@
       }
     });
 
-    // Update bottom nav
     elements.navButtons.forEach(btn => {
       btn.classList.toggle('active', btn.dataset.target === viewName);
     });
@@ -320,7 +506,6 @@
     }, 2800);
   }
 
-  // Pixel Processing Engine (Canvas 2D Manipulations)
   function applyAllFilters() {
     if (!state.originalImageData) return;
 
@@ -344,28 +529,23 @@
       let b = src[i + 2];
       let a = src[i + 3];
 
-      // Exposure & Brightness
       r += exp + bri;
       g += exp + bri;
       b += exp + bri;
 
-      // Contrast
       r = ((r - 128) * con) + 128;
       g = ((g - 128) * con) + 128;
       b = ((b - 128) * con) + 128;
 
-      // Warmth & Tint
       r += warm * 0.6;
       b -= warm * 0.6;
       g += tint * 0.4;
 
-      // Saturation
       const gray = 0.299 * r + 0.587 * g + 0.114 * b;
       r = gray + (r - gray) * sat;
       g = gray + (g - gray) * sat;
       b = gray + (b - gray) * sat;
 
-      // Skin Smoothing approximation
       if (smooth > 0 && r > 100 && g > 60 && b > 40 && r > g && g > b) {
         r = r * (1 - smooth * 0.002) + gray * (smooth * 0.002);
       }
@@ -378,7 +558,6 @@
 
     state.ctx.putImageData(output, 0, 0);
 
-    // Apply Vignette if enabled
     if (state.adjustments.vignette > 0) {
       applyVignetteEffect(state.adjustments.vignette);
     }
@@ -395,7 +574,6 @@
     state.ctx.fillRect(0, 0, w, h);
   }
 
-  // Tool Drawer Dynamic UI Rendering
   function renderToolPanel(toolName) {
     state.activeTool = toolName;
     elements.toolTabs.forEach(t => t.classList.toggle('active', t.dataset.tool === toolName));
@@ -483,7 +661,6 @@
         break;
     }
 
-    // Attach slider listeners
     container.querySelectorAll('.slider-input').forEach(slider => {
       slider.addEventListener('input', e => {
         const prop = e.target.dataset.prop;
@@ -495,7 +672,6 @@
       });
     });
 
-    // Attach filter listeners
     container.querySelectorAll('.filter-thumb-card').forEach(card => {
       card.addEventListener('click', () => {
         const fId = card.dataset.filter;
@@ -523,7 +699,6 @@
   }
 
   function setupEventListeners() {
-    // Language Toggle
     if (elements.langBtn) {
       elements.langBtn.addEventListener('click', () => {
         state.currentLanguage = state.currentLanguage === 'ar' ? 'en' : 'ar';
@@ -531,7 +706,6 @@
       });
     }
 
-    // Navigation Items
     elements.navButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.dataset.target;
@@ -544,13 +718,19 @@
         } else if (target === 'storyDesigner') {
           switchView('storyDesigner', i18n[state.currentLanguage].story_designer);
           renderStoryCanvas();
+        } else if (target === 'profile') {
+          if (AuthManager.currentUser) {
+            switchView('profile');
+            renderProfileScreen();
+          } else {
+            switchView('auth');
+          }
         } else {
           switchView('home');
         }
       });
     });
 
-    // File Input Upload
     if (elements.fileInput) {
       elements.fileInput.addEventListener('change', e => {
         const file = e.target.files[0];
@@ -571,14 +751,12 @@
       });
     }
 
-    // Tool Category Tabs
     elements.toolTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         renderToolPanel(tab.dataset.tool);
       });
     });
 
-    // Before/After Compare Button
     if (elements.compareBtn) {
       const toggleCompare = () => {
         if (!state.originalImageData) return;
@@ -597,7 +775,6 @@
       elements.compareBtn.addEventListener('touchend', toggleCompare, { passive: true });
     }
 
-    // Export Button
     if (elements.exportBtn) {
       elements.exportBtn.addEventListener('click', () => {
         if (!state.canvas) return;
@@ -610,7 +787,6 @@
       });
     }
 
-    // Quick Tool chips on Home
     document.querySelectorAll('.quick-tool-chip').forEach(chip => {
       chip.addEventListener('click', () => {
         const action = chip.dataset.action;
@@ -627,7 +803,6 @@
       });
     });
 
-    // Feature Cards on Home
     document.querySelectorAll('.feature-card').forEach(card => {
       card.addEventListener('click', () => {
         const dest = card.dataset.dest;
@@ -644,7 +819,6 @@
       });
     });
 
-    // Hero CTA Button
     const heroBtn = document.getElementById('heroCreateBtn');
     if (heroBtn) {
       heroBtn.addEventListener('click', () => {
@@ -653,7 +827,6 @@
       });
     }
 
-    // Ad Studio Form Inputs
     const adHeadlineInput = document.getElementById('adHeadlineInput');
     const adSublineInput = document.getElementById('adSublineInput');
     const adBadgeInput = document.getElementById('adBadgeInput');
@@ -685,7 +858,6 @@
     }
   }
 
-  // Advertisement Canvas Generator
   function renderAdCanvas() {
     const canvas = document.getElementById('adCanvas');
     if (!canvas) return;
@@ -693,21 +865,18 @@
     canvas.height = 1080;
     const ctx = canvas.getContext('2d');
 
-    // Rich Dark Ad Gradient
     const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1080);
     bgGrad.addColorStop(0, '#151322');
     bgGrad.addColorStop(1, '#0C0A14');
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, 1080, 1080);
 
-    // Decorative Purple glow
     const radial = ctx.createRadialGradient(540, 400, 50, 540, 400, 600);
     radial.addColorStop(0, 'rgba(139, 92, 246, 0.35)');
     radial.addColorStop(1, 'transparent');
     ctx.fillStyle = radial;
     ctx.fillRect(0, 0, 1080, 1080);
 
-    // Badge Pill
     ctx.fillStyle = '#8B5CF6';
     roundRect(ctx, 420, 180, 240, 64, 32);
     ctx.fill();
@@ -717,17 +886,14 @@
     ctx.textAlign = 'center';
     ctx.fillText(state.adState.badge || 'PROMOTION', 540, 222);
 
-    // Headline
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 64px sans-serif';
     ctx.fillText(state.adState.headline || 'Exclusive Offer', 540, 360);
 
-    // Subtitle
     ctx.fillStyle = '#94A3B8';
     ctx.font = '400 32px sans-serif';
     ctx.fillText(state.adState.subline || 'Premium Quality Guaranteed', 540, 440);
 
-    // CTA Button
     ctx.fillStyle = '#FFFFFF';
     roundRect(ctx, 390, 840, 300, 80, 40);
     ctx.fill();
@@ -737,7 +903,6 @@
     ctx.fillText(state.adState.cta || 'Shop Now', 540, 892);
   }
 
-  // Story Designer Canvas Generator
   function renderStoryCanvas() {
     const canvas = document.getElementById('storyCanvas');
     if (!canvas) return;
@@ -745,7 +910,6 @@
     canvas.height = 1920;
     const ctx = canvas.getContext('2d');
 
-    // 9:16 background
     const bgGrad = ctx.createLinearGradient(0, 0, 1080, 1920);
     bgGrad.addColorStop(0, '#241442');
     bgGrad.addColorStop(0.5, '#140D26');
@@ -753,12 +917,10 @@
     ctx.fillStyle = bgGrad;
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // Modern frame border
     ctx.strokeStyle = 'rgba(139, 92, 246, 0.4)';
     ctx.lineWidth = 12;
     ctx.strokeRect(60, 60, 960, 1800);
 
-    // Headline
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 76px sans-serif';
     ctx.textAlign = 'center';
@@ -812,9 +974,7 @@
       });
       localStorage.setItem('ava_recent_projects', JSON.stringify(projects.slice(0, 5)));
       renderRecentProjects();
-    } catch (e) {
-      // Local storage fallback
-    }
+    } catch (e) {}
   }
 
   function renderRecentProjects() {
@@ -822,20 +982,1064 @@
     if (!list) return;
     try {
       const projects = JSON.parse(localStorage.getItem('ava_recent_projects') || '[]');
-      if (projects.length === 0) {
-        list.innerHTML = `<div style="color:var(--text-tertiary); font-size:0.8rem; padding:8px 0;">لا توجد مشاريع سابقة بعد</div>`;
-        return;
+      const title = 'AVA Edit ' + (projects.length + 1);
+      projects.unshift({
+        id: Date.now(),
+        date: new Date().toLocaleDateString(),
+        title: title
+      });
+      localStorage.setItem('ava_recent_projects', JSON.stringify(projects.slice(0, 5)));
+      renderRecentProjects();
+
+      // Persist to user's isolated project collection with thumbnail
+      if (state.canvas) {
+        const thumb = state.canvas.toDataURL('image/jpeg', 0.6);
+        AuthManager.saveUserProject(title, thumb);
       }
-      list.innerHTML = projects.map(p => `
-        <div style="background:var(--bg-card); padding:10px 14px; border-radius:12px; border:1px solid var(--border-subtle); display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <span style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">${p.title}</span>
-          <span style="font-size:0.75rem; color:var(--text-tertiary);">${p.date}</span>
-        </div>
-      `).join('');
     } catch (e) {}
   }
 
-  // Run on DOM Ready
+  // ==========================================================================
+  // Auth, Profile, Security & Account Management
+  // ==========================================================================
+
+  const AuthManager = {
+    currentUser: null,
+    tempVerificationEmail: null,
+    tempResetEmail: null,
+
+    async hashPassword(password, salt) {
+      try {
+        const enc = new TextEncoder();
+        const data = enc.encode(password + '::' + salt + '::ava_studio_secret_2026');
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+      } catch (e) {
+        let hash = 0;
+        const str = password + salt;
+        for (let i = 0; i < str.length; i++) {
+          hash = ((hash << 5) - hash) + str.charCodeAt(i);
+          hash |= 0;
+        }
+        return 'fallback_' + Math.abs(hash).toString(16);
+      }
+    },
+
+    getUsers() {
+      try {
+        const stored = localStorage.getItem('ava_users_v2');
+        if (stored) return JSON.parse(stored);
+      } catch (e) {}
+
+      // Default Seed Users (Founder Ayham securely provisioned)
+      const defaultUsers = [
+        {
+          id: 'user_ayham_creator',
+          displayName: 'Ayham',
+          username: 'ayham_creative',
+          email: 'ayham@avastudio.io',
+          salt: 'salt_ayham_founder_2026',
+          passwordHash: '8cb388a1b6c68ad039bf8d4cf605d549fef56f2f01f8d4389025cead7c7b8e19',
+          bio: 'المؤسس والمصمم الرئيسي لتطبيق AVA Studio. أصنع تصاميم وهوية بصرية فخمة.',
+          avatar: null,
+          isFounder: true,
+          isVerified: true,
+          isEmailVerified: true,
+          coins: 1500,
+          followers: '1.8k',
+          createdAt: 1704067200000
+        },
+        {
+          id: 'user_sara_art',
+          displayName: 'Sara Visuals',
+          username: 'sara_art',
+          email: 'sara@avastudio.io',
+          salt: 'salt_sara_creator_2026',
+          passwordHash: '5a44ef6e3c3b0dcba988ffbc16a246944747714856f9a9cbb3d31481e1fe8512',
+          bio: 'مصممة بوسترات ومحررة صور سينمائية. مهتمة بإعلانات الموضة والأزياء.',
+          avatar: null,
+          isFounder: false,
+          isVerified: true,
+          isEmailVerified: true,
+          coins: 620,
+          followers: '530',
+          createdAt: 1704153600000
+        }
+      ];
+      localStorage.setItem('ava_users_v2', JSON.stringify(defaultUsers));
+      return defaultUsers;
+    },
+
+    saveUsers(users) {
+      try {
+        localStorage.setItem('ava_users_v2', JSON.stringify(users));
+      } catch (e) {}
+    },
+
+    async init() {
+      const users = this.getUsers();
+      try {
+        const sessionStr = localStorage.getItem('ava_session_v2');
+        if (sessionStr) {
+          const session = JSON.parse(sessionStr);
+          const user = users.find(u => u.id === session.userId);
+          if (user) {
+            this.currentUser = user;
+          }
+        }
+      } catch (e) {}
+    },
+
+    setSession(user) {
+      this.currentUser = user;
+      try {
+        localStorage.setItem('ava_session_v2', JSON.stringify({
+          userId: user.id,
+          token: 'token_' + Date.now() + '_' + Math.random().toString(36).substring(2),
+          loginAt: Date.now()
+        }));
+      } catch (e) {}
+      renderTopUserPill();
+    },
+
+    clearSession() {
+      this.currentUser = null;
+      try {
+        localStorage.removeItem('ava_session_v2');
+      } catch (e) {}
+      renderTopUserPill();
+    },
+
+    async login(email, password) {
+      const cleanEmail = email.trim().toLowerCase();
+      const users = this.getUsers();
+      const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+
+      if (!user) {
+        throw new Error(state.currentLanguage === 'ar' ? 'البريد الإلكتروني أو كلمة المرور غير صحيحة' : 'Invalid email or password');
+      }
+
+      const inputHash = await this.hashPassword(password, user.salt);
+      if (inputHash !== user.passwordHash) {
+        throw new Error(state.currentLanguage === 'ar' ? 'البريد الإلكتروني أو كلمة المرور غير صحيحة' : 'Invalid email or password');
+      }
+
+      if (!user.isEmailVerified) {
+        this.tempVerificationEmail = user.email;
+        throw new Error('EMAIL_NOT_VERIFIED');
+      }
+
+      this.setSession(user);
+      return user;
+    },
+
+    async register(displayName, username, email, password) {
+      const cleanName = displayName.trim();
+      const cleanUsername = username.trim().toLowerCase().replace(/[^a-z0-9_]/g, '');
+      const cleanEmail = email.trim().toLowerCase();
+
+      if (!cleanName) {
+        throw new Error(state.currentLanguage === 'ar' ? 'يرجى إدخال الاسم الظاهر' : 'Display name required');
+      }
+      if (cleanUsername.length < 3) {
+        throw new Error(state.currentLanguage === 'ar' ? 'اسم المستخدم يجب أن يكون 3 أحرف على الأقل' : 'Username min 3 chars');
+      }
+      if (!cleanEmail.includes('@') || !cleanEmail.includes('.')) {
+        throw new Error(state.currentLanguage === 'ar' ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email address');
+      }
+      if (password.length < 6) {
+        throw new Error(state.currentLanguage === 'ar' ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password min 6 chars');
+      }
+
+      const users = this.getUsers();
+      if (users.some(u => u.username.toLowerCase() === cleanUsername)) {
+        throw new Error(state.currentLanguage === 'ar' ? 'اسم المستخدم مستخدم مسبقاً، اختر اسماً آخر' : 'Username already taken');
+      }
+      if (users.some(u => u.email.toLowerCase() === cleanEmail)) {
+        throw new Error(state.currentLanguage === 'ar' ? 'البريد الإلكتروني مسجل بالفعل، يرجى تسجيل الدخول' : 'Email already registered');
+      }
+
+      const salt = 'salt_' + Math.random().toString(36).substring(2) + Date.now();
+      const passwordHash = await this.hashPassword(password, salt);
+      const verifyCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+      const newUser = {
+        id: 'user_' + Date.now() + '_' + Math.random().toString(36).substring(2, 6),
+        displayName: cleanName,
+        username: cleanUsername,
+        email: cleanEmail,
+        salt: salt,
+        passwordHash: passwordHash,
+        bio: state.currentLanguage === 'ar' ? 'مبدع في AVA Studio' : 'Creator at AVA Studio',
+        avatar: null,
+        isFounder: false, // Normal users can NEVER register as founder
+        isVerified: false,
+        isEmailVerified: false,
+        verificationCode: verifyCode,
+        coins: 100,
+        followers: '0',
+        createdAt: Date.now()
+      };
+
+      users.push(newUser);
+      this.saveUsers(users);
+      this.tempVerificationEmail = cleanEmail;
+      return { user: newUser, code: verifyCode };
+    },
+
+    async socialLogin(provider) {
+      const isGoogle = provider === 'google';
+      const cleanEmail = isGoogle ? 'google.user@avastudio.io' : 'apple.user@avastudio.io';
+      const displayName = isGoogle ? 'Google User' : 'Apple User';
+      const username = isGoogle ? 'google_creator' : 'apple_creator';
+      const defaultBio = state.currentLanguage === 'ar'
+        ? (isGoogle ? 'حساب موثق عبر Google في AVA Studio' : 'حساب موثق عبر Apple ID في AVA Studio')
+        : (isGoogle ? 'Verified Google Account on AVA Studio' : 'Verified Apple ID Account on AVA Studio');
+
+      const users = this.getUsers();
+      let user = users.find(u => u.email.toLowerCase() === cleanEmail);
+
+      if (!user) {
+        user = {
+          id: isGoogle ? 'user_google_account' : 'user_apple_account',
+          displayName: displayName,
+          username: username,
+          email: cleanEmail,
+          salt: 'salt_social_' + provider,
+          passwordHash: 'social_auth_secured_' + provider,
+          bio: defaultBio,
+          avatar: null,
+          isFounder: false,
+          isVerified: true,
+          isEmailVerified: true,
+          coins: 800,
+          followers: '120',
+          createdAt: Date.now()
+        };
+        users.push(user);
+        this.saveUsers(users);
+      } else {
+        user.isVerified = true;
+        user.isEmailVerified = true;
+        this.saveUsers(users);
+      }
+
+      this.setSession(user);
+      return user;
+    },
+
+    verifyEmail(code) {
+      const users = this.getUsers();
+      const user = users.find(u => u.email.toLowerCase() === (this.tempVerificationEmail || '').toLowerCase());
+      if (!user) {
+        throw new Error(state.currentLanguage === 'ar' ? 'تعذر العثور على الحساب' : 'Account not found');
+      }
+
+      if (user.verificationCode && user.verificationCode.trim() === code.trim()) {
+        user.isEmailVerified = true;
+        delete user.verificationCode;
+        this.saveUsers(users);
+        this.setSession(user);
+        return user;
+      } else {
+        throw new Error(state.currentLanguage === 'ar' ? 'رمز التحقق غير صحيح، حاول مجدداً' : 'Invalid verification code');
+      }
+    },
+
+    resendVerification() {
+      const users = this.getUsers();
+      const user = users.find(u => u.email.toLowerCase() === (this.tempVerificationEmail || '').toLowerCase());
+      if (!user) throw new Error('Account not found');
+      const newCode = Math.floor(100000 + Math.random() * 900000).toString();
+      user.verificationCode = newCode;
+      this.saveUsers(users);
+      return newCode;
+    },
+
+    requestPasswordReset(email) {
+      const cleanEmail = email.trim().toLowerCase();
+      const users = this.getUsers();
+      const user = users.find(u => u.email.toLowerCase() === cleanEmail);
+      if (!user) {
+        throw new Error(state.currentLanguage === 'ar' ? 'لم يتم العثور على حساب بهذا البريد' : 'No account found with this email');
+      }
+      const resetCode = Math.floor(100000 + Math.random() * 900000).toString();
+      user.resetCode = resetCode;
+      this.saveUsers(users);
+      this.tempResetEmail = cleanEmail;
+      return resetCode;
+    },
+
+    async resetPassword(code, newPassword) {
+      if (newPassword.length < 6) {
+        throw new Error(state.currentLanguage === 'ar' ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password min 6 chars');
+      }
+      const users = this.getUsers();
+      const user = users.find(u => u.email.toLowerCase() === (this.tempResetEmail || '').toLowerCase());
+      if (!user || !user.resetCode || user.resetCode.trim() !== code.trim()) {
+        throw new Error(state.currentLanguage === 'ar' ? 'رمز التحقق غير صحيح' : 'Invalid verification code');
+      }
+
+      user.salt = 'salt_' + Math.random().toString(36).substring(2) + Date.now();
+      user.passwordHash = await this.hashPassword(newPassword, user.salt);
+      delete user.resetCode;
+      this.saveUsers(users);
+      return true;
+    },
+
+    async changePassword(currentPassword, newPassword) {
+      if (!this.currentUser) throw new Error('Not logged in');
+      if (newPassword.length < 6) {
+        throw new Error(state.currentLanguage === 'ar' ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password min 6 chars');
+      }
+      const currentHash = await this.hashPassword(currentPassword, this.currentUser.salt);
+      if (currentHash !== this.currentUser.passwordHash) {
+        throw new Error(state.currentLanguage === 'ar' ? 'كلمة المرور الحالية غير صحيحة' : 'Current password incorrect');
+      }
+
+      const users = this.getUsers();
+      const user = users.find(u => u.id === this.currentUser.id);
+      if (user) {
+        user.salt = 'salt_' + Math.random().toString(36).substring(2) + Date.now();
+        user.passwordHash = await this.hashPassword(newPassword, user.salt);
+        this.saveUsers(users);
+        this.currentUser = user;
+      }
+      return true;
+    },
+
+    updateProfile(displayName, bio) {
+      if (!this.currentUser) return;
+      const users = this.getUsers();
+      const user = users.find(u => u.id === this.currentUser.id);
+      if (user) {
+        user.displayName = displayName.trim() || user.displayName;
+        user.bio = bio.trim();
+        this.saveUsers(users);
+        this.currentUser = user;
+        renderTopUserPill();
+        renderProfileScreen();
+      }
+    },
+
+    deleteAccount() {
+      if (!this.currentUser) return;
+      const userId = this.currentUser.id;
+      let users = this.getUsers();
+      users = users.filter(u => u.id !== userId);
+      this.saveUsers(users);
+
+      try {
+        let allProjects = JSON.parse(localStorage.getItem('ava_user_projects') || '[]');
+        allProjects = allProjects.filter(p => p.userId !== userId);
+        localStorage.setItem('ava_user_projects', JSON.stringify(allProjects));
+      } catch (e) {}
+
+      this.clearSession();
+    },
+
+    getUserProjects() {
+      try {
+        const all = JSON.parse(localStorage.getItem('ava_user_projects') || '[]');
+        const currentId = this.currentUser ? this.currentUser.id : 'guest';
+        return all.filter(p => p.userId === currentId);
+      } catch (e) {
+        return [];
+      }
+    },
+
+    saveUserProject(title, thumbDataUrl) {
+      try {
+        const all = JSON.parse(localStorage.getItem('ava_user_projects') || '[]');
+        const currentId = this.currentUser ? this.currentUser.id : 'guest';
+        const newProject = {
+          id: 'proj_' + Date.now(),
+          userId: currentId,
+          title: title || (state.currentLanguage === 'ar' ? 'مشروع تصميم' : 'Creative Project'),
+          date: new Date().toLocaleDateString(),
+          thumb: thumbDataUrl
+        };
+        all.unshift(newProject);
+        localStorage.setItem('ava_user_projects', JSON.stringify(all.slice(0, 30)));
+      } catch (e) {}
+    },
+
+    deleteUserProject(projectId) {
+      try {
+        let all = JSON.parse(localStorage.getItem('ava_user_projects') || '[]');
+        const currentId = this.currentUser ? this.currentUser.id : 'guest';
+        all = all.filter(p => !(p.id === projectId && p.userId === currentId));
+        localStorage.setItem('ava_user_projects', JSON.stringify(all));
+        renderUserProjectsGrid();
+      } catch (e) {}
+    }
+  };
+
+  // Top User Pill Renderer
+  function renderTopUserPill() {
+    if (!elements.topUserPillContainer) return;
+    const isAr = state.currentLanguage === 'ar';
+    const user = AuthManager.currentUser;
+
+    if (user) {
+      elements.topUserPillContainer.innerHTML = `
+        <button class="user-pill-btn" id="topUserPillBtn" title="${user.displayName}">
+          <div class="user-pill-avatar">${user.displayName.charAt(0).toUpperCase()}</div>
+          <span>${user.displayName}</span>
+          ${user.isFounder ? `<span style="color:var(--accent-gold); font-size:0.75rem; font-weight:800;">★</span>` : ''}
+        </button>
+      `;
+      document.getElementById('topUserPillBtn').addEventListener('click', () => {
+        switchView('profile');
+        renderProfileScreen();
+      });
+      if (elements.navProfileLabel) {
+        elements.navProfileLabel.textContent = isAr ? 'حسابي' : 'Profile';
+      }
+    } else {
+      elements.topUserPillContainer.innerHTML = `
+        <button class="user-pill-btn" id="topUserPillBtn">
+          <span>${isAr ? 'تسجيل الدخول' : 'Sign In'}</span>
+        </button>
+      `;
+      document.getElementById('topUserPillBtn').addEventListener('click', () => {
+        switchView('auth');
+      });
+      if (elements.navProfileLabel) {
+        elements.navProfileLabel.textContent = isAr ? 'دخول' : 'Sign In';
+      }
+    }
+  }
+
+  // Profile Screen Renderer
+  function renderProfileScreen() {
+    const user = AuthManager.currentUser;
+    if (!user) return;
+    if (elements.profileDisplayName) elements.profileDisplayName.textContent = user.displayName;
+    if (elements.profileUsername) elements.profileUsername.textContent = '@' + user.username;
+    if (elements.profileBio) elements.profileBio.textContent = user.bio || (state.currentLanguage === 'ar' ? 'مبدع ومصمم في AVA Studio' : 'AVA Studio Creator');
+    if (elements.profileAvatarText) elements.profileAvatarText.textContent = user.displayName.charAt(0).toUpperCase();
+
+    if (elements.profileFounderBadge) {
+      elements.profileFounderBadge.style.display = user.isFounder ? 'inline-flex' : 'none';
+      elements.profileFounderBadge.textContent = state.currentLanguage === 'ar' ? 'المؤسس' : 'Founder';
+    }
+    if (elements.profileVerifiedBadge) {
+      elements.profileVerifiedBadge.style.display = (user.isVerified || user.isFounder) ? 'inline-flex' : 'none';
+    }
+
+    if (elements.statCoinsCount) elements.statCoinsCount.textContent = (user.coins || 0).toLocaleString();
+    if (elements.statFollowersCount) elements.statFollowersCount.textContent = user.followers || '0';
+
+    const projects = AuthManager.getUserProjects();
+    if (elements.statProjectsCount) elements.statProjectsCount.textContent = projects.length;
+
+    renderUserProjectsGrid();
+  }
+
+  // User Projects Grid Renderer
+  function renderUserProjectsGrid() {
+    if (!elements.userProjectsGrid) return;
+    const isAr = state.currentLanguage === 'ar';
+    const projects = AuthManager.getUserProjects();
+
+    if (projects.length === 0) {
+      elements.userProjectsGrid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align:center; padding:32px 16px; color:var(--text-tertiary); font-size:0.85rem;">
+          ${isAr ? 'لا توجد تصاميم محفوظة بعد. ابدأ تصميماً جديداً من الاستوديو!' : 'No saved creations yet. Start a new design from the studio!'}
+        </div>
+      `;
+      return;
+    }
+
+    elements.userProjectsGrid.innerHTML = projects.map(p => `
+      <div class="user-project-card" data-proj-id="${p.id}">
+        <div class="user-project-thumb">
+          ${p.thumb ? `<img src="${p.thumb}" alt="${p.title}">` : `<div style="width:100%; height:100%; background:linear-gradient(135deg, #2D1B4E, #140D26);"></div>`}
+        </div>
+        <div class="user-project-info">
+          <div class="user-project-title">${p.title}</div>
+          <div class="user-project-date">${p.date}</div>
+        </div>
+        <div class="user-project-actions">
+          <button class="user-project-action-btn load-proj-btn" data-id="${p.id}">${isAr ? 'فتح' : 'Open'}</button>
+          <button class="user-project-action-btn delete delete-proj-btn" data-id="${p.id}">✕</button>
+        </div>
+      </div>
+    `).join('');
+
+    elements.userProjectsGrid.querySelectorAll('.delete-proj-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        AuthManager.deleteUserProject(id);
+        renderProfileScreen();
+        showToast(isAr ? 'تم حذف المشروع' : 'Project deleted');
+      });
+    });
+
+    elements.userProjectsGrid.querySelectorAll('.load-proj-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const p = projects.find(x => x.id === id);
+        if (p && p.thumb) {
+          const img = new Image();
+          img.onload = () => {
+            setImage(img);
+            switchView('editor', p.title);
+            renderToolPanel('adjust');
+          };
+          img.src = p.thumb;
+        }
+      });
+    });
+  }
+
+  // Setup Auth Event Listeners
+  function setupAuthEventListeners() {
+    const isAr = () => state.currentLanguage === 'ar';
+
+    // Tabs Switch
+    if (elements.tabBtnLogin && elements.tabBtnRegister) {
+      elements.tabBtnLogin.addEventListener('click', () => {
+        elements.tabBtnLogin.classList.add('active');
+        elements.tabBtnRegister.classList.remove('active');
+        elements.loginForm.style.display = 'block';
+        elements.registerForm.style.display = 'none';
+        hideAuthAlert();
+      });
+      elements.tabBtnRegister.addEventListener('click', () => {
+        elements.tabBtnRegister.classList.add('active');
+        elements.tabBtnLogin.classList.remove('active');
+        elements.registerForm.style.display = 'block';
+        elements.loginForm.style.display = 'none';
+        hideAuthAlert();
+      });
+    }
+
+    // Password Visibility Toggles
+    document.querySelectorAll('.auth-password-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const input = document.getElementById(targetId);
+        if (input) {
+          input.type = input.type === 'password' ? 'text' : 'password';
+        }
+      });
+    });
+
+    // Helper functions for alerts
+    function showAuthAlert(msg, isSuccess = false) {
+      if (!elements.authAlertBox) return;
+      elements.authAlertBox.textContent = msg;
+      elements.authAlertBox.className = `auth-alert-box ${isSuccess ? 'success' : 'error'}`;
+      elements.authAlertBox.style.display = 'flex';
+    }
+
+    function hideAuthAlert() {
+      if (elements.authAlertBox) elements.authAlertBox.style.display = 'none';
+    }
+
+    // Real-Time Form Validation Engine
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const validationTimers = {};
+
+    function setupRealtimeValidation(inputEl, validateFn, getErrorMessage, minChars = 1) {
+      if (!inputEl) return;
+      const timerKey = inputEl.id || Math.random().toString();
+
+      const performCheck = (showToastNotice = true) => {
+        const val = inputEl.value.trim();
+        if (!val || val.length < minChars) {
+          inputEl.classList.remove('input-invalid', 'input-valid');
+          return true;
+        }
+
+        const isValid = validateFn(val);
+        if (isValid) {
+          inputEl.classList.remove('input-invalid');
+          inputEl.classList.add('input-valid');
+          return true;
+        } else {
+          inputEl.classList.remove('input-valid');
+          inputEl.classList.add('input-invalid');
+          if (showToastNotice) {
+            showToast(getErrorMessage());
+          }
+          return false;
+        }
+      };
+
+      inputEl.addEventListener('input', () => {
+        clearTimeout(validationTimers[timerKey]);
+        inputEl.classList.remove('input-invalid', 'input-valid');
+        // Real-time debounce: gives the user time to finish typing
+        validationTimers[timerKey] = setTimeout(() => {
+          performCheck(true);
+        }, 750);
+      });
+
+      inputEl.addEventListener('blur', () => {
+        clearTimeout(validationTimers[timerKey]);
+        if (inputEl.value.trim().length >= minChars) {
+          performCheck(true);
+        }
+      });
+    }
+
+    // Setup Real-time Checks for Email and Password Fields
+    setupRealtimeValidation(
+      elements.regEmail,
+      (val) => emailRegex.test(val),
+      () => isAr() ? 'صيغة البريد الإلكتروني غير صحيحة (مثال: name@domain.com)' : 'Invalid email format (e.g. name@domain.com)',
+      3
+    );
+
+    setupRealtimeValidation(
+      elements.regPassword,
+      (val) => val.length >= 6,
+      () => isAr() ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password must be at least 6 characters',
+      1
+    );
+
+    if (elements.regPasswordConfirm) {
+      setupRealtimeValidation(
+        elements.regPasswordConfirm,
+        (val) => val === (elements.regPassword ? elements.regPassword.value : ''),
+        () => isAr() ? 'كلمتا المرور غير متطابقتين' : 'Passwords do not match',
+        1
+      );
+    }
+
+    setupRealtimeValidation(
+      elements.loginEmail,
+      (val) => !val.includes('@') || emailRegex.test(val),
+      () => isAr() ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format',
+      4
+    );
+
+    setupRealtimeValidation(
+      elements.loginPassword,
+      (val) => val.length >= 6,
+      () => isAr() ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password must be at least 6 characters',
+      1
+    );
+
+    if (elements.forgotEmail) {
+      setupRealtimeValidation(
+        elements.forgotEmail,
+        (val) => emailRegex.test(val),
+        () => isAr() ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format',
+        3
+      );
+    }
+
+    if (elements.forgotNewPass) {
+      setupRealtimeValidation(
+        elements.forgotNewPass,
+        (val) => val.length >= 6,
+        () => isAr() ? 'كلمة المرور الجديدة يجب أن لا تقل عن 6 أحرف' : 'New password must be at least 6 characters',
+        1
+      );
+    }
+
+    // Login Form Submit
+    if (elements.loginForm) {
+      elements.loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideAuthAlert();
+        const email = elements.loginEmail.value.trim();
+        const password = elements.loginPassword.value;
+
+        if (email.includes('@') && !emailRegex.test(email)) {
+          const msg = isAr() ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format';
+          showToast(msg);
+          showAuthAlert(msg);
+          return;
+        }
+
+        if (password.length < 6) {
+          const msg = isAr() ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password must be at least 6 characters';
+          showToast(msg);
+          showAuthAlert(msg);
+          return;
+        }
+
+        try {
+          await AuthManager.login(email, password);
+          showToast(isAr() ? 'تم تسجيل الدخول بنجاح! مرحباً بك' : 'Signed in successfully! Welcome');
+          switchView('profile');
+          renderProfileScreen();
+        } catch (err) {
+          if (err.message === 'EMAIL_NOT_VERIFIED') {
+            showVerificationBox(email);
+          } else {
+            showAuthAlert(err.message);
+            showToast(err.message);
+          }
+        }
+      });
+    }
+
+    // Register Form Submit
+    if (elements.registerForm) {
+      elements.registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        hideAuthAlert();
+
+        const name = elements.regDisplayName.value;
+        const username = elements.regUsername.value;
+        const email = elements.regEmail.value.trim();
+        const pass = elements.regPassword.value;
+        const passConfirm = elements.regPasswordConfirm.value;
+
+        if (!emailRegex.test(email)) {
+          const msg = isAr() ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format';
+          showToast(msg);
+          showAuthAlert(msg);
+          return;
+        }
+
+        if (pass.length < 6) {
+          const msg = isAr() ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password must be at least 6 characters';
+          showToast(msg);
+          showAuthAlert(msg);
+          return;
+        }
+
+        if (pass !== passConfirm) {
+          const msg = isAr() ? 'كلمتا المرور غير متطابقتين' : 'Passwords do not match';
+          showToast(msg);
+          showAuthAlert(msg);
+          return;
+        }
+
+        try {
+          const res = await AuthManager.register(name, username, email, pass);
+          showVerificationBox(email, res.code);
+        } catch (err) {
+          showAuthAlert(err.message);
+        }
+      });
+    }
+
+    // Guest Continue
+    if (elements.guestContinueBtn) {
+      elements.guestContinueBtn.addEventListener('click', () => {
+        switchView('home');
+      });
+    }
+
+    // Social Login (Google & Apple)
+    if (elements.socialGoogleBtn) {
+      elements.socialGoogleBtn.addEventListener('click', async () => {
+        try {
+          await AuthManager.socialLogin('google');
+          showToast(isAr() ? 'تم تسجيل الدخول بنجاح عبر حساب Google!' : 'Signed in with Google successfully!');
+          switchView('profile');
+          renderProfileScreen();
+        } catch (err) {
+          showAuthAlert(err.message || 'Google Sign-In failed');
+        }
+      });
+    }
+
+    if (elements.socialAppleBtn) {
+      elements.socialAppleBtn.addEventListener('click', async () => {
+        try {
+          await AuthManager.socialLogin('apple');
+          showToast(isAr() ? 'تم تسجيل الدخول بنجاح عبر Apple ID!' : 'Signed in with Apple ID successfully!');
+          switchView('profile');
+          renderProfileScreen();
+        } catch (err) {
+          showAuthAlert(err.message || 'Apple Sign-In failed');
+        }
+      });
+    }
+
+    // Show Verification Box
+    function showVerificationBox(email, demoCode) {
+      if (elements.authMainBox) elements.authMainBox.style.display = 'none';
+      if (elements.authForgotBox) elements.authForgotBox.style.display = 'none';
+      if (elements.authVerifyBox) {
+        elements.authVerifyBox.style.display = 'block';
+        if (elements.verifyEmailTarget) {
+          elements.verifyEmailTarget.textContent = (isAr() ? 'تم إرسال رمز التحقق إلى: ' : 'Verification code sent to: ') + email;
+        }
+        if (demoCode && elements.verifyAlertBox) {
+          elements.verifyAlertBox.style.display = 'flex';
+          elements.verifyAlertBox.className = 'auth-alert-box success';
+          elements.verifyAlertBox.textContent = (isAr() ? 'رمز التحقق الخاص بك هو: ' : 'Your verification code is: ') + demoCode;
+        }
+      }
+    }
+
+    // 6-digit inputs auto-focus
+    if (elements.codeDigitInputs) {
+      elements.codeDigitInputs.forEach((input, index) => {
+        input.addEventListener('input', () => {
+          if (input.value.length === 1 && index < elements.codeDigitInputs.length - 1) {
+            elements.codeDigitInputs[index + 1].focus();
+          }
+        });
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !input.value && index > 0) {
+            elements.codeDigitInputs[index - 1].focus();
+          }
+        });
+      });
+    }
+
+    // Verify Confirm Button
+    if (elements.verifyConfirmBtn) {
+      elements.verifyConfirmBtn.addEventListener('click', () => {
+        let code = '';
+        elements.codeDigitInputs.forEach(i => code += i.value);
+        try {
+          AuthManager.verifyEmail(code);
+          showToast(isAr() ? 'تم تأكيد البريد وتفعيل الحساب بنجاح!' : 'Email verified and account activated!');
+          if (elements.authVerifyBox) elements.authVerifyBox.style.display = 'none';
+          if (elements.authMainBox) elements.authMainBox.style.display = 'block';
+          switchView('profile');
+          renderProfileScreen();
+        } catch (err) {
+          if (elements.verifyAlertBox) {
+            elements.verifyAlertBox.style.display = 'flex';
+            elements.verifyAlertBox.className = 'auth-alert-box error';
+            elements.verifyAlertBox.textContent = err.message;
+          }
+        }
+      });
+    }
+
+    // Resend Code
+    if (elements.verifyResendBtn) {
+      elements.verifyResendBtn.addEventListener('click', () => {
+        try {
+          const newCode = AuthManager.resendVerification();
+          if (elements.verifyAlertBox) {
+            elements.verifyAlertBox.style.display = 'flex';
+            elements.verifyAlertBox.className = 'auth-alert-box success';
+            elements.verifyAlertBox.textContent = (isAr() ? 'تم إنشاء رمز جديد: ' : 'New code generated: ') + newCode;
+          }
+        } catch (e) {}
+      });
+    }
+
+    // Back to Login from Verify
+    if (elements.verifyBackBtn) {
+      elements.verifyBackBtn.addEventListener('click', () => {
+        if (elements.authVerifyBox) elements.authVerifyBox.style.display = 'none';
+        if (elements.authMainBox) elements.authMainBox.style.display = 'block';
+      });
+    }
+
+    // Forgot Password Flow
+    if (elements.forgotPassLink) {
+      elements.forgotPassLink.addEventListener('click', () => {
+        if (elements.authMainBox) elements.authMainBox.style.display = 'none';
+        if (elements.authForgotBox) {
+          elements.authForgotBox.style.display = 'block';
+          if (elements.forgotStep1) elements.forgotStep1.style.display = 'block';
+          if (elements.forgotStep2) elements.forgotStep2.style.display = 'none';
+        }
+      });
+    }
+
+    if (elements.forgotSendBtn) {
+      elements.forgotSendBtn.addEventListener('click', () => {
+        const email = elements.forgotEmail.value.trim();
+        if (!emailRegex.test(email)) {
+          const msg = isAr() ? 'صيغة البريد الإلكتروني غير صحيحة' : 'Invalid email format';
+          showToast(msg);
+          if (elements.forgotAlertBox) {
+            elements.forgotAlertBox.style.display = 'flex';
+            elements.forgotAlertBox.className = 'auth-alert-box error';
+            elements.forgotAlertBox.textContent = msg;
+          }
+          return;
+        }
+
+        try {
+          const resetCode = AuthManager.requestPasswordReset(email);
+          if (elements.forgotStep1) elements.forgotStep1.style.display = 'none';
+          if (elements.forgotStep2) elements.forgotStep2.style.display = 'block';
+          if (elements.forgotAlertBox) {
+            elements.forgotAlertBox.style.display = 'flex';
+            elements.forgotAlertBox.className = 'auth-alert-box success';
+            elements.forgotAlertBox.textContent = (isAr() ? 'رمز إعادة التعيين هو: ' : 'Your reset code is: ') + resetCode;
+          }
+        } catch (err) {
+          if (elements.forgotAlertBox) {
+            elements.forgotAlertBox.style.display = 'flex';
+            elements.forgotAlertBox.className = 'auth-alert-box error';
+            elements.forgotAlertBox.textContent = err.message;
+          }
+          showToast(err.message);
+        }
+      });
+    }
+
+    if (elements.forgotResetBtn) {
+      elements.forgotResetBtn.addEventListener('click', async () => {
+        const code = elements.forgotCodeInput.value.trim();
+        const newPass = elements.forgotNewPass.value;
+
+        if (newPass.length < 6) {
+          const msg = isAr() ? 'كلمة المرور يجب أن لا تقل عن 6 أحرف' : 'Password must be at least 6 characters';
+          showToast(msg);
+          if (elements.forgotAlertBox) {
+            elements.forgotAlertBox.style.display = 'flex';
+            elements.forgotAlertBox.className = 'auth-alert-box error';
+            elements.forgotAlertBox.textContent = msg;
+          }
+          return;
+        }
+
+        try {
+          await AuthManager.resetPassword(code, newPass);
+          showToast(isAr() ? 'تم تغيير كلمة المرور بنجاح! سجّل الدخول الآن' : 'Password reset successfully! Please sign in');
+          if (elements.authForgotBox) elements.authForgotBox.style.display = 'none';
+          if (elements.authMainBox) elements.authMainBox.style.display = 'block';
+        } catch (err) {
+          if (elements.forgotAlertBox) {
+            elements.forgotAlertBox.style.display = 'flex';
+            elements.forgotAlertBox.className = 'auth-alert-box error';
+            elements.forgotAlertBox.textContent = err.message;
+          }
+          showToast(err.message);
+        }
+      });
+    }
+
+    if (elements.forgotBackBtn) {
+      elements.forgotBackBtn.addEventListener('click', () => {
+        if (elements.authForgotBox) elements.authForgotBox.style.display = 'none';
+        if (elements.authMainBox) elements.authMainBox.style.display = 'block';
+      });
+    }
+
+    // Profile & Settings Navigation
+    if (elements.openSettingsBtn) {
+      elements.openSettingsBtn.addEventListener('click', () => {
+        switchView('settings');
+      });
+    }
+
+    if (elements.settingsBackBtn) {
+      elements.settingsBackBtn.addEventListener('click', () => {
+        switchView('profile');
+      });
+    }
+
+    // Edit Profile Modal
+    if (elements.editProfileBtn) {
+      elements.editProfileBtn.addEventListener('click', () => {
+        const u = AuthManager.currentUser;
+        if (!u) return;
+        if (elements.editDisplayNameInput) elements.editDisplayNameInput.value = u.displayName;
+        if (elements.editBioInput) elements.editBioInput.value = u.bio || '';
+        if (elements.editProfileModal) elements.editProfileModal.classList.add('active');
+      });
+    }
+
+    if (elements.saveProfileChangesBtn) {
+      elements.saveProfileChangesBtn.addEventListener('click', () => {
+        const name = elements.editDisplayNameInput.value;
+        const bio = elements.editBioInput.value;
+        AuthManager.updateProfile(name, bio);
+        if (elements.editProfileModal) elements.editProfileModal.classList.remove('active');
+        showToast(isAr() ? 'تم حفظ التعديلات بنجاح' : 'Profile updated successfully');
+      });
+    }
+
+    // Change Password Modal
+    if (elements.changePasswordSettingBtn) {
+      elements.changePasswordSettingBtn.addEventListener('click', () => {
+        if (elements.changePasswordAlert) elements.changePasswordAlert.style.display = 'none';
+        if (elements.currentPassInput) elements.currentPassInput.value = '';
+        if (elements.newPassInput) elements.newPassInput.value = '';
+        if (elements.confirmNewPassInput) elements.confirmNewPassInput.value = '';
+        if (elements.changePasswordModal) elements.changePasswordModal.classList.add('active');
+      });
+    }
+
+    if (elements.submitChangePassBtn) {
+      elements.submitChangePassBtn.addEventListener('click', async () => {
+        const cur = elements.currentPassInput.value;
+        const n = elements.newPassInput.value;
+        const c = elements.confirmNewPassInput.value;
+
+        if (n !== c) {
+          if (elements.changePasswordAlert) {
+            elements.changePasswordAlert.style.display = 'flex';
+            elements.changePasswordAlert.className = 'auth-alert-box error';
+            elements.changePasswordAlert.textContent = isAr() ? 'كلمتا المرور غير متطابقتين' : 'Passwords do not match';
+          }
+          return;
+        }
+
+        try {
+          await AuthManager.changePassword(cur, n);
+          if (elements.changePasswordModal) elements.changePasswordModal.classList.remove('active');
+          showToast(isAr() ? 'تم تغيير كلمة المرور بنجاح' : 'Password changed successfully');
+        } catch (err) {
+          if (elements.changePasswordAlert) {
+            elements.changePasswordAlert.style.display = 'flex';
+            elements.changePasswordAlert.className = 'auth-alert-box error';
+            elements.changePasswordAlert.textContent = err.message;
+          }
+        }
+      });
+    }
+
+    // Settings Toggle Language
+    if (elements.toggleLangSettingBtn) {
+      elements.toggleLangSettingBtn.addEventListener('click', () => {
+        state.currentLanguage = state.currentLanguage === 'ar' ? 'en' : 'ar';
+        updateLocalization();
+        if (elements.currentLangLabel) {
+          elements.currentLangLabel.textContent = state.currentLanguage === 'ar' ? 'العربية (Arabic)' : 'English (الإنجليزية)';
+        }
+      });
+    }
+
+    // Logout
+    if (elements.logoutSettingBtn) {
+      elements.logoutSettingBtn.addEventListener('click', () => {
+        AuthManager.logout();
+        showToast(isAr() ? 'تم تسجيل الخروج بنجاح' : 'Logged out successfully');
+        switchView('home');
+      });
+    }
+
+    // Delete Account Confirmation Modal
+    if (elements.deleteAccountSettingBtn) {
+      elements.deleteAccountSettingBtn.addEventListener('click', () => {
+        if (elements.deleteAccountModal) elements.deleteAccountModal.classList.add('active');
+      });
+    }
+
+    if (elements.confirmDeleteAccountBtn) {
+      elements.confirmDeleteAccountBtn.addEventListener('click', () => {
+        AuthManager.deleteAccount();
+        if (elements.deleteAccountModal) elements.deleteAccountModal.classList.remove('active');
+        showToast(isAr() ? 'تم مسح الحساب وكافة البيانات نهائياً' : 'Account and data permanently deleted');
+        switchView('home');
+      });
+    }
+
+    // Close Modals
+    document.querySelectorAll('[data-close]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const modalId = btn.dataset.close;
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.remove('active');
+      });
+    });
+  }
+
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

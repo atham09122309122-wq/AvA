@@ -58,6 +58,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.data.model.UserEntity
 import com.example.ui.theme.AvaBlack
 import com.example.ui.theme.AvaCard
 import com.example.ui.theme.AvaCardBorder
@@ -136,6 +137,8 @@ fun AvaTopBar(
     onLanguageClick: () -> Unit,
     onHelpClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
+    onProfileClick: () -> Unit = {},
+    user: UserEntity? = null,
     modifier: Modifier = Modifier
 ) {
     Row(
@@ -184,8 +187,8 @@ fun AvaTopBar(
             }
         }
 
-        // Actions: Lang + Help + Settings
-        Row(verticalAlignment = Alignment.CenterVertically) {
+        // Actions: Lang + Help + Profile/Login + Settings
+        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
             IconButton(
                 onClick = onLanguageClick,
                 modifier = Modifier.size(36.dp).testTag("lang_toggle_button")
@@ -208,6 +211,37 @@ fun AvaTopBar(
                     tint = AvaTextSecondary,
                     modifier = Modifier.size(20.dp)
                 )
+            }
+
+            // User Profile / Sign In Button
+            IconButton(
+                onClick = onProfileClick,
+                modifier = Modifier.size(36.dp).testTag("profile_top_btn")
+            ) {
+                if (user != null) {
+                    Box(
+                        modifier = Modifier
+                            .size(28.dp)
+                            .clip(CircleShape)
+                            .background(AvaPurpleContainer)
+                            .border(1.5.dp, if (user.isFounder) AvaGold else AvaPurplePrimary, CircleShape),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = user.displayName.take(1).uppercase(),
+                            color = if (user.isFounder) AvaGold else AvaPurpleLight,
+                            fontSize = 12.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                } else {
+                    Icon(
+                        imageVector = Icons.Default.Person,
+                        contentDescription = "Sign In / Profile",
+                        tint = AvaTextSecondary,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
             }
 
             IconButton(

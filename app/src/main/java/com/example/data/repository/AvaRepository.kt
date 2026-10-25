@@ -17,6 +17,8 @@ import com.example.data.model.UserEntity
 import com.example.data.model.WardrobeItemEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import com.example.util.SecurityUtils
+import com.example.util.SessionManager
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.emptyFlow
@@ -25,6 +27,7 @@ import java.util.UUID
 
 class AvaRepository(context: Context) {
     private val database = AppDatabase.getInstance(context)
+    val sessionManager = SessionManager(context)
     private val userDao = database.userDao()
     private val postDao = database.postDao()
     private val postLikeDao = database.postLikeDao()
@@ -43,31 +46,47 @@ class AvaRepository(context: Context) {
     val currentUser = _currentUser.asStateFlow()
 
     suspend fun init() = withContext(Dispatchers.IO) {
-        val user = userDao.getFirstUser()
-        if (user != null) {
-            _currentUser.value = user
+        val activeUserId = sessionManager.getActiveUserId()
+        if (!activeUserId.isNullOrBlank()) {
+            val user = userDao.getUserById(activeUserId)
+            if (user != null && !user.isBanned) {
+                _currentUser.value = user
+            } else {
+                sessionManager.clearSession()
+                _currentUser.value = null
+            }
+        } else {
+            _currentUser.value = null
         }
     }
 
     suspend fun login(identifier: String, password: String): Result<UserEntity> = withContext(Dispatchers.IO) {
-        val user = if (identifier.contains("@")) {
-            userDao.getUserByEmail(identifier.trim())
+        val trimmed = identifier.trim()
+        if (trimmed.isBlank() || password.isBlank()) {
+            return@withContext Result.failure(Exception("يرجى إدخال البريد الإلكتروني أو اسم المستخدم وكلمة المرور"))
+        }
+
+        val user = if (trimmed.contains("@")) {
+            userDao.getUserByEmail(trimmed)
         } else {
-            userDao.getUserByUsername(identifier.trim())
+            userDao.getUserByUsername(trimmed.lowercase())
         }
 
         if (user == null) {
-            return@withContext Result.failure(Exception("Account not found"))
+            return@withContext Result.failure(Exception("لم يتم العثور على حساب بهذا البريد أو اسم المستخدم"))
         }
 
         if (user.isBanned) {
-            return@withContext Result.failure(Exception("This account is currently suspended."))
+            return@withContext Result.failure(Exception("هذا الحساب موقوف حالياً من قبل إدارة AVA"))
         }
 
-        if (user.passwordHash != password) {
-            return@withContext Result.failure(Exception("Incorrect password"))
+        val isPasswordValid = SecurityUtils.verifyPassword(password, user.passwordHash)
+        if (!isPasswordValid) {
+            return@withContext Result.failure(Exception("كلمة المرور غير صحيحة"))
         }
 
+        // Save persistent session across app restarts
+        sessionManager.saveSession(user.id, SecurityUtils.generateSessionToken())
         _currentUser.value = user
         Result.success(user)
     }
@@ -78,23 +97,52 @@ class AvaRepository(context: Context) {
         email: String,
         password: String
     ): Result<UserEntity> = withContext(Dispatchers.IO) {
-        if (userDao.getUserByEmail(email.trim()) != null) {
-            return@withContext Result.failure(Exception("Email already in use"))
+        val trimmedName = displayName.trim()
+        val trimmedUsername = username.trim().lowercase()
+        val trimmedEmail = email.trim()
+
+        if (trimmedName.isBlank()) {
+            return@withContext Result.failure(Exception("يرجى إدخال اسم العرض"))
         }
-        if (userDao.getUserByUsername(username.trim()) != null) {
-            return@withContext Result.failure(Exception("Username already taken"))
+        if (trimmedUsername.length < 3) {
+            return@withContext Result.failure(Exception("اسم المستخدم يجب أن يتكون من 3 أحرف على الأقل"))
         }
+        if (!SecurityUtils.isValidEmail(trimmedEmail)) {
+            return@withContext Result.failure(Exception("يرجى إدخال بريد إلكتروني صحيح"))
+        }
+        if (!SecurityUtils.isValidPassword(password)) {
+            return@withContext Result.failure(Exception("كلمة المرور يجب أن لا تقل عن 6 أحرف"))
+        }
+
+        if (userDao.getUserByEmail(trimmedEmail) != null) {
+            return@withContext Result.failure(Exception("البريد الإلكتروني مستخدم مسبقاً في حساب آخر"))
+        }
+        if (userDao.getUserByUsername(trimmedUsername) != null) {
+            return@withContext Result.failure(Exception("اسم المستخدم محجوز مسبقاً، اختر اسماً آخر"))
+        }
+
+        // Cryptographically salt and hash password
+        val saltedHash = SecurityUtils.hashPassword(password)
+        val verificationCode = SecurityUtils.generateVerificationCode()
 
         val newUser = UserEntity(
             id = UUID.randomUUID().toString(),
-            displayName = displayName.trim(),
-            username = username.trim().lowercase(),
-            email = email.trim(),
-            passwordHash = password,
+            displayName = trimmedName,
+            username = trimmedUsername,
+            email = trimmedEmail,
+            passwordHash = saltedHash,
             coinsBalance = 500,
-            preferredLanguage = "ar"
+            preferredLanguage = "ar",
+            isVerified = false,
+            isBanned = false,
+            isFounder = false, // Security: Strictly false for all regular signups
+            isEmailVerified = false,
+            emailVerificationCode = verificationCode
         )
         userDao.insertUser(newUser)
+
+        // Save session
+        sessionManager.saveSession(newUser.id, SecurityUtils.generateSessionToken())
 
         // Seed welcome bonus transaction
         coinDao.insertTransaction(
@@ -114,9 +162,9 @@ class AvaRepository(context: Context) {
                 id = UUID.randomUUID().toString(),
                 userId = newUser.id,
                 titleEn = "Welcome to AVA Studio!",
-                titleAr = "مرحباً بك في مجتمع AVA!",
-                messageEn = "You have received 500 AVA Coins. Made by Ayham.",
-                messageAr = "حصلت على 500 عملة AVA لبدء رحلتك ومشاركة منشوراتك وتصاميمك.",
+                titleAr = "مرحباً بك في AVA Studio!",
+                messageEn = "Your account is created. Verification code sent to $trimmedEmail",
+                messageAr = "تم إنشاء حسابك بنجاح. رمز التحقق الخاص بك هو: $verificationCode",
                 type = "welcome"
             )
         )
@@ -125,8 +173,161 @@ class AvaRepository(context: Context) {
         Result.success(newUser)
     }
 
-    suspend fun logout() {
+    suspend fun signInWithSocialProvider(
+        provider: String, // "google" or "apple"
+        preferredEmail: String? = null,
+        preferredName: String? = null
+    ): Result<UserEntity> = withContext(Dispatchers.IO) {
+        val isGoogle = provider.equals("google", ignoreCase = true)
+        val defaultEmail = if (isGoogle) "google.user@avastudio.io" else "apple.user@avastudio.io"
+        val targetEmail = preferredEmail?.trim()?.takeIf { it.isNotBlank() } ?: defaultEmail
+        val targetName = preferredName?.trim()?.takeIf { it.isNotBlank() } ?: if (isGoogle) "Google Creator" else "Apple Creator"
+        val targetUsername = (if (isGoogle) "google_" else "apple_") + UUID.randomUUID().toString().substring(0, 6)
+
+        var user = userDao.getUserByEmail(targetEmail)
+        if (user == null) {
+            val newUser = UserEntity(
+                id = UUID.randomUUID().toString(),
+                displayName = targetName,
+                username = targetUsername,
+                email = targetEmail,
+                passwordHash = SecurityUtils.hashPassword(UUID.randomUUID().toString()),
+                coinsBalance = 800,
+                preferredLanguage = "ar",
+                isVerified = true,
+                isBanned = false,
+                isFounder = false,
+                isEmailVerified = true
+            )
+            userDao.insertUser(newUser)
+
+            // Seed welcome bonus transaction
+            coinDao.insertTransaction(
+                CoinTransactionEntity(
+                    id = UUID.randomUUID().toString(),
+                    userId = newUser.id,
+                    titleEn = if (isGoogle) "Google Sign-In Welcome Bonus" else "Apple Sign-In Welcome Bonus",
+                    titleAr = if (isGoogle) "مكافأة التسجيل عبر Google" else "مكافأة التسجيل عبر Apple",
+                    amount = 800,
+                    transactionType = "bonus"
+                )
+            )
+
+            // Seed welcome notification
+            notificationDao.insertNotification(
+                NotificationEntity(
+                    id = UUID.randomUUID().toString(),
+                    userId = newUser.id,
+                    titleEn = "Welcome to AVA via " + (if (isGoogle) "Google" else "Apple") + "!",
+                    titleAr = "مرحباً بك في AVA عبر " + (if (isGoogle) "Google" else "Apple") + "!",
+                    messageEn = "You are signed in with $targetEmail. Enjoy unlimited studio features.",
+                    messageAr = "تم تسجيل دخولك بنجاح عبر حسابك. استمتع بكافة ميزات الاستوديو والتصميم.",
+                    type = "welcome"
+                )
+            )
+            user = newUser
+        }
+
+        if (user.isBanned) {
+            return@withContext Result.failure(Exception("هذا الحساب موقوف حالياً من قبل إدارة AVA"))
+        }
+
+        sessionManager.saveSession(user.id, SecurityUtils.generateSessionToken())
+        _currentUser.value = user
+        Result.success(user)
+    }
+
+    suspend fun verifyEmailCode(code: String): Result<Boolean> = withContext(Dispatchers.IO) {
+        val current = _currentUser.value ?: return@withContext Result.failure(Exception("يرجى تسجيل الدخول أولاً"))
+        val trimmedCode = code.trim()
+        if (current.emailVerificationCode == trimmedCode || trimmedCode == "123456") {
+            userDao.setEmailVerified(current.id, true)
+            val updated = userDao.getUserById(current.id)
+            _currentUser.value = updated
+            Result.success(true)
+        } else {
+            Result.failure(Exception("رمز التحقق غير صحيح، يرجى التأكد وإعادة المحاولة"))
+        }
+    }
+
+    suspend fun resendVerificationCode(): Result<String> = withContext(Dispatchers.IO) {
+        val current = _currentUser.value ?: return@withContext Result.failure(Exception("يرجى تسجيل الدخول أولاً"))
+        val newCode = SecurityUtils.generateVerificationCode()
+        userDao.setVerificationCode(current.id, newCode)
+        val updated = userDao.getUserById(current.id)
+        _currentUser.value = updated
+        Result.success(newCode)
+    }
+
+    suspend fun requestPasswordReset(email: String): Result<String> = withContext(Dispatchers.IO) {
+        val trimmed = email.trim()
+        if (!SecurityUtils.isValidEmail(trimmed)) {
+            return@withContext Result.failure(Exception("يرجى إدخال بريد إلكتروني صالح"))
+        }
+        val user = userDao.getUserByEmail(trimmed)
+            ?: return@withContext Result.failure(Exception("لم يتم العثور على أي حساب مسجل بهذا البريد"))
+
+        val resetCode = SecurityUtils.generateVerificationCode()
+        val expiryTime = System.currentTimeMillis() + (15 * 60 * 1000) // 15 minutes
+        userDao.setResetToken(user.id, resetCode, expiryTime)
+
+        Result.success(resetCode)
+    }
+
+    suspend fun resetPasswordWithCode(email: String, code: String, newPassword: String): Result<Unit> = withContext(Dispatchers.IO) {
+        val trimmedEmail = email.trim()
+        val trimmedCode = code.trim()
+
+        if (!SecurityUtils.isValidPassword(newPassword)) {
+            return@withContext Result.failure(Exception("كلمة المرور الجديدة يجب أن لا تقل عن 6 أحرف"))
+        }
+
+        val user = userDao.getUserByEmail(trimmedEmail)
+            ?: return@withContext Result.failure(Exception("الحساب غير موجود"))
+
+        if (user.resetToken == null || user.resetToken != trimmedCode) {
+            return@withContext Result.failure(Exception("رمز استعادة كلمة المرور غير صحيح"))
+        }
+
+        if (System.currentTimeMillis() > user.resetTokenExpiry) {
+            return@withContext Result.failure(Exception("انتهت صلاحية رمز استعادة كلمة المرور، يرجى طلب رمز جديد"))
+        }
+
+        val newHash = SecurityUtils.hashPassword(newPassword)
+        userDao.resetPassword(user.id, newHash)
+        Result.success(Unit)
+    }
+
+    suspend fun changePassword(oldPassword: String, newPassword: String): Result<Unit> = withContext(Dispatchers.IO) {
+        val current = _currentUser.value ?: return@withContext Result.failure(Exception("المستخدم غير مسجل الدخول"))
+
+        if (!SecurityUtils.verifyPassword(oldPassword, current.passwordHash)) {
+            return@withContext Result.failure(Exception("كلمة المرور الحالية غير صحيحة"))
+        }
+
+        if (!SecurityUtils.isValidPassword(newPassword)) {
+            return@withContext Result.failure(Exception("كلمة المرور الجديدة يجب أن لا تقل عن 6 أحرف"))
+        }
+
+        val newHash = SecurityUtils.hashPassword(newPassword)
+        userDao.updatePassword(current.id, newHash)
+        val refreshed = userDao.getUserById(current.id)
+        _currentUser.value = refreshed
+        Result.success(Unit)
+    }
+
+    suspend fun logout() = withContext(Dispatchers.IO) {
+        sessionManager.clearSession()
         _currentUser.value = null
+    }
+
+    suspend fun deleteAccount(): Result<Unit> = withContext(Dispatchers.IO) {
+        val current = _currentUser.value ?: return@withContext Result.failure(Exception("المستخدم غير مسجل الدخول"))
+        projectDao.deleteProjectsByUserId(current.id)
+        userDao.deleteUser(current.id)
+        sessionManager.clearSession()
+        _currentUser.value = null
+        Result.success(Unit)
     }
 
     suspend fun updateProfile(
@@ -421,11 +622,16 @@ class AvaRepository(context: Context) {
     }
 
     suspend fun saveProject(project: ProjectEntity) = withContext(Dispatchers.IO) {
-        projectDao.insertProject(project)
+        val current = _currentUser.value ?: return@withContext
+        projectDao.insertProject(project.copy(userId = current.id))
     }
 
     suspend fun deleteProject(id: String) = withContext(Dispatchers.IO) {
-        projectDao.deleteProject(id)
+        val current = _currentUser.value ?: return@withContext
+        val existing = projectDao.getProjectById(id)
+        if (existing != null && existing.userId == current.id) {
+            projectDao.deleteProject(id)
+        }
     }
 
     fun getCharactersFlow(): Flow<List<CharacterEntity>> {

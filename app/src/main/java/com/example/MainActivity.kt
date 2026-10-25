@@ -30,6 +30,7 @@ import com.example.ui.components.AvaBottomBar
 import com.example.ui.components.AvaTopBar
 import com.example.ui.screens.adstudio.AdStudioWizardScreen
 import com.example.ui.screens.ai.BetouAiScreen
+import com.example.ui.screens.auth.EmailVerificationScreen
 import com.example.ui.screens.auth.ForgotPasswordScreen
 import com.example.ui.screens.auth.LoginScreen
 import com.example.ui.screens.auth.RegisterScreen
@@ -124,7 +125,15 @@ class MainActivity : ComponentActivity() {
                                             viewModel.setLanguage(nextLang)
                                         },
                                         onHelpClick = { viewModel.navigateTo(AppScreen.HELP_REPORT) },
-                                        onSettingsClick = { viewModel.navigateTo(AppScreen.ACCOUNT_SETTINGS) }
+                                        onSettingsClick = { viewModel.navigateTo(AppScreen.ACCOUNT_SETTINGS) },
+                                        onProfileClick = {
+                                            if (user != null) {
+                                                viewModel.navigateTo(AppScreen.PROFILE)
+                                            } else {
+                                                viewModel.navigateTo(AppScreen.LOGIN)
+                                            }
+                                        },
+                                        user = user
                                     )
                                 }
                             }
@@ -163,31 +172,34 @@ class MainActivity : ComponentActivity() {
                                     AppScreen.PERSONAL_PHOTO -> PersonalPhotoStudioScreen(viewModel)
                                     AppScreen.STORY_DESIGNER -> StoryDesignerScreen(viewModel)
 
-                                    // Support, Settings & Info
+                                    // Auth & Profiles
+                                    AppScreen.LOGIN -> LoginScreen(viewModel)
+                                    AppScreen.REGISTER -> RegisterScreen(viewModel)
+                                    AppScreen.FORGOT_PASSWORD -> ForgotPasswordScreen(viewModel)
+                                    AppScreen.EMAIL_VERIFICATION -> EmailVerificationScreen(viewModel)
+                                    AppScreen.PROFILE -> ProfileScreen(viewModel)
+                                    AppScreen.EDIT_PROFILE -> EditProfileScreen(viewModel)
+
+                                    // Support, Settings & Notifications
                                     AppScreen.HELP_REPORT -> HelpAndReportScreen(viewModel)
                                     AppScreen.ACCOUNT_SETTINGS -> AccountSettingsScreen(viewModel)
                                     AppScreen.LANGUAGE_SETTINGS -> LanguageSettingsScreen(viewModel)
                                     AppScreen.ABOUT_AVA -> AboutAvaScreen(viewModel)
-
-                                    // Preserved / fallback routes for modular compatibility
-                                    AppScreen.SPLASH -> HomeScreen(viewModel)
-                                    AppScreen.EXPLORE -> TemplatesScreen(viewModel)
-                                    AppScreen.CHARACTERS -> HomeScreen(viewModel)
-                                    AppScreen.PROFILE -> AccountSettingsScreen(viewModel)
-                                    AppScreen.CHAT_LIST -> HomeScreen(viewModel)
-                                    AppScreen.CHAT_CONVERSATION -> HomeScreen(viewModel)
-                                    AppScreen.BETOU_AI -> HomeScreen(viewModel)
-                                    AppScreen.FOLLOWERS_FOLLOWING -> HomeScreen(viewModel)
-                                    AppScreen.FOUNDER_DASHBOARD -> HomeScreen(viewModel)
-                                    AppScreen.ADMIN_USERS_MANAGEMENT -> HomeScreen(viewModel)
-                                    AppScreen.CHARACTER_STUDIO -> HomeScreen(viewModel)
-                                    AppScreen.CHARACTER_WARDROBE -> HomeScreen(viewModel)
-                                    AppScreen.COINS_WALLET -> HomeScreen(viewModel)
                                     AppScreen.NOTIFICATIONS -> NotificationsScreen(viewModel)
-                                    AppScreen.EDIT_PROFILE -> EditProfileScreen(viewModel)
-                                    AppScreen.LOGIN -> HomeScreen(viewModel)
-                                    AppScreen.REGISTER -> HomeScreen(viewModel)
-                                    AppScreen.FORGOT_PASSWORD -> HomeScreen(viewModel)
+
+                                    // Founder & Community Hubs
+                                    AppScreen.FOUNDER_DASHBOARD -> FounderDashboardScreen(viewModel)
+                                    AppScreen.ADMIN_USERS_MANAGEMENT -> AdminUserManagementScreen(viewModel)
+                                    AppScreen.COINS_WALLET -> CoinsWalletScreen(viewModel)
+                                    AppScreen.CHARACTERS -> CharactersScreen(viewModel)
+                                    AppScreen.CHARACTER_STUDIO -> CharacterStudioScreen(viewModel)
+                                    AppScreen.CHARACTER_WARDROBE -> CharacterWardrobeScreen(viewModel)
+                                    AppScreen.CHAT_LIST -> ChatListScreen(viewModel)
+                                    AppScreen.CHAT_CONVERSATION -> ChatConversationScreen(viewModel)
+                                    AppScreen.BETOU_AI -> BetouAiScreen(viewModel)
+                                    AppScreen.FOLLOWERS_FOLLOWING -> FollowersFollowingScreen(viewModel)
+                                    AppScreen.EXPLORE -> ExploreScreen(viewModel)
+                                    AppScreen.SPLASH -> SplashScreen(viewModel)
                                     else -> HomeScreen(viewModel)
                                 }
                             }

@@ -18,6 +18,7 @@ import com.example.data.model.ProjectEntity
 import com.example.data.model.ReportEntity
 import com.example.data.model.UserEntity
 import com.example.data.model.WardrobeItemEntity
+import com.example.util.SecurityUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,7 +39,7 @@ import kotlinx.coroutines.launch
         CoinTransactionEntity::class,
         NotificationEntity::class
     ],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -83,13 +84,13 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         suspend fun seedInitialData(database: AppDatabase) {
-            // Seed Default Users
-            val founderAyham = UserEntity(
+            // Seed Default Users with salted cryptographic hashes
+            val founderAyham = database.userDao().getUserById("user_ayham_creator") ?: UserEntity(
                 id = "user_ayham_creator",
                 displayName = "Ayham",
                 username = "ayham_creative",
                 email = "ayham@avastudio.io",
-                passwordHash = "Password123!",
+                passwordHash = SecurityUtils.hashPassword("AyhamFounder2026!"),
                 bio = "المؤسس والمصمم الرئيسي لتطبيق AVA Studio. أصنع تصاميم وهوية بصرية فخمة.",
                 avatarUri = null,
                 bannerUri = null,
@@ -100,16 +101,16 @@ abstract class AppDatabase : RoomDatabase() {
                 isBanned = false,
                 isFounder = true,
                 followersCount = 1840,
-                followingCount = 42
-            )
-            database.userDao().insertUser(founderAyham)
+                followingCount = 42,
+                isEmailVerified = true
+            ).also { database.userDao().insertUser(it) }
 
-            val creatorSara = UserEntity(
+            val creatorSara = database.userDao().getUserById("user_sara_art") ?: UserEntity(
                 id = "user_sara_art",
                 displayName = "Sara Visuals",
                 username = "sara_art",
                 email = "sara@avastudio.io",
-                passwordHash = "Password123!",
+                passwordHash = SecurityUtils.hashPassword("CreativeSara2026!"),
                 bio = "مصممة بوسترات ومحررة صور سينمائية. مهتمة بإعلانات الموضة والأزياء.",
                 avatarUri = null,
                 bannerUri = null,
@@ -120,17 +121,17 @@ abstract class AppDatabase : RoomDatabase() {
                 isBanned = false,
                 isFounder = false,
                 followersCount = 530,
-                followingCount = 110
-            )
-            database.userDao().insertUser(creatorSara)
+                followingCount = 110,
+                isEmailVerified = true
+            ).also { database.userDao().insertUser(it) }
 
-            val creatorOmar = UserEntity(
+            val creatorOmar = database.userDao().getUserById("user_omar_kicks") ?: UserEntity(
                 id = "user_omar_kicks",
                 displayName = "Omar Street",
                 username = "omar_street",
                 email = "omar@avastudio.io",
-                passwordHash = "Password123!",
-                bio = "Streetwear aesthetic & sneaker visual concepts. Love AVA character studio.",
+                passwordHash = SecurityUtils.hashPassword("Streetwear2026!"),
+                bio = "Streetwear aesthetic & sneaker visual concepts. Love AVA creative studio.",
                 avatarUri = null,
                 bannerUri = null,
                 coinsBalance = 410,
@@ -140,9 +141,9 @@ abstract class AppDatabase : RoomDatabase() {
                 isBanned = false,
                 isFounder = false,
                 followersCount = 280,
-                followingCount = 95
-            )
-            database.userDao().insertUser(creatorOmar)
+                followingCount = 95,
+                isEmailVerified = true
+            ).also { database.userDao().insertUser(it) }
 
             // Seed Initial Posts for Feed
             val samplePosts = listOf(

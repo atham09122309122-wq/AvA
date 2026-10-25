@@ -31,6 +31,7 @@ import androidx.compose.material.icons.filled.Language
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.Notifications
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -38,6 +39,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
@@ -53,8 +55,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import android.widget.Toast
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ui.components.AvaSubTopBar
@@ -64,6 +69,7 @@ import com.example.ui.theme.AvaCard
 import com.example.ui.theme.AvaCardBorder
 import com.example.ui.theme.AvaDivider
 import com.example.ui.theme.AvaError
+import com.example.ui.theme.AvaGold
 import com.example.ui.theme.AvaPurpleContainer
 import com.example.ui.theme.AvaPurpleLight
 import com.example.ui.theme.AvaPurplePrimary
@@ -87,7 +93,17 @@ fun AccountSettingsScreen(
     modifier: Modifier = Modifier
 ) {
     val user by viewModel.currentUser.collectAsState()
+    val appLanguage by viewModel.appLanguage.collectAsState()
+    val isAr = appLanguage == AppLanguage.ARABIC
+    val context = LocalContext.current
+
     var showDeleteDialog by remember { mutableStateOf(false) }
+    var showChangePasswordDialog by remember { mutableStateOf(false) }
+    var currentPassword by remember { mutableStateOf("") }
+    var newPassword by remember { mutableStateOf("") }
+    var confirmNewPassword by remember { mutableStateOf("") }
+    var changePasswordError by remember { mutableStateOf<String?>(null) }
+    var isChangingPassword by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
@@ -95,7 +111,7 @@ fun AccountSettingsScreen(
             .background(AvaBlack)
     ) {
         AvaSubTopBar(
-            title = stringRes("settings"),
+            title = if (isAr) "إعدادات الحساب والخصوصية" else "Account & Privacy Settings",
             onBack = { viewModel.navigateBack() }
         )
 
@@ -105,26 +121,100 @@ fun AccountSettingsScreen(
                 .padding(16.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            // User Header Card if logged in
+            item {
+                if (user != null) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(AvaCard)
+                            .border(1.dp, AvaCardBorder, RoundedCornerShape(16.dp))
+                            .padding(16.dp)
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Box(
+                                modifier = Modifier
+                                    .size(50.dp)
+                                    .clip(CircleShape)
+                                    .background(AvaPurpleContainer),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(Icons.Default.Person, contentDescription = null, tint = AvaPurpleLight, modifier = Modifier.size(30.dp))
+                            }
+                            Spacer(modifier = Modifier.width(14.dp))
+                            Column(modifier = Modifier.weight(1f)) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Text(text = user?.displayName ?: "", color = AvaTextPrimary, fontWeight = FontWeight.Bold, fontSize = 16.sp)
+                                    if (user?.isFounder == true) {
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Text(
+                                            text = if (isAr) "المؤسس" else "Founder",
+                                            color = AvaGold,
+                                            fontSize = 10.sp,
+                                            fontWeight = FontWeight.Bold
+                                        )
+                                    }
+                                }
+                                Text(text = user?.email ?: "", color = AvaTextSecondary, fontSize = 12.sp)
+                            }
+                        }
+                    }
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(AvaCard)
+                            .border(1.dp, AvaPurplePrimary.copy(alpha = 0.5f), RoundedCornerShape(16.dp))
+                            .padding(16.dp)
+                    ) {
+                        Column {
+                            Text(
+                                text = if (isAr) "حساب زائر (غير مسجل)" else "Guest Mode (Not Signed In)",
+                                color = AvaTextPrimary,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 15.sp
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = if (isAr) "سجّل الدخول لحفظ مشاريعك وتخصيص استوديو AVA باسمك" else "Sign in to save your designs and customize your AVA studio",
+                                color = AvaTextSecondary,
+                                fontSize = 12.sp
+                            )
+                            Spacer(modifier = Modifier.height(12.dp))
+                            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                                Button(
+                                    onClick = { viewModel.navigateTo(AppScreen.LOGIN) },
+                                    colors = ButtonDefaults.buttonColors(containerColor = AvaPurplePrimary),
+                                    shape = RoundedCornerShape(8.dp)
+                                ) {
+                                    Text(if (isAr) "تسجيل الدخول" else "Sign In", color = Color.White, fontSize = 12.sp)
+                                }
+                                OutlinedButton(
+                                    onClick = { viewModel.navigateTo(AppScreen.REGISTER) },
+                                    colors = ButtonDefaults.outlinedButtonColors(contentColor = AvaPurpleLight),
+                                    shape = RoundedCornerShape(8.dp)
+                                ) {
+                                    Text(if (isAr) "إنشاء حساب" else "Register", fontSize = 12.sp)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             // General Settings Group
             item {
-                Text(text = "Preferences & Studio", color = AvaPurpleLight, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                Text(text = if (isAr) "التفضيلات والتطبيق" else "Preferences & Studio", color = AvaPurpleLight, fontSize = 12.sp, fontWeight = FontWeight.Bold)
             }
 
             item {
                 SettingsRow(
                     icon = Icons.Default.Language,
                     title = stringRes("language_settings"),
-                    subtitle = "English / العربية (RTL)",
+                    subtitle = if (isAr) "العربية (الحالية) / English" else "English (Active) / العربية",
                     onClick = { viewModel.navigateTo(AppScreen.LANGUAGE_SETTINGS) }
-                )
-            }
-
-            item {
-                SettingsRow(
-                    icon = Icons.Default.Notifications,
-                    title = stringRes("notifications"),
-                    subtitle = "Studio activity and reward updates",
-                    onClick = { viewModel.navigateTo(AppScreen.NOTIFICATIONS) }
                 )
             }
 
@@ -141,7 +231,7 @@ fun AccountSettingsScreen(
                 SettingsRow(
                     icon = Icons.Default.Help,
                     title = stringRes("help_feedback"),
-                    subtitle = "FAQ, abuse reporting and creator support",
+                    subtitle = if (isAr) "الأسئلة الشائعة والدعم الفني" else "FAQ & Creator Support",
                     onClick = { viewModel.navigateTo(AppScreen.HELP_REPORT) }
                 )
             }
@@ -150,64 +240,192 @@ fun AccountSettingsScreen(
                 item {
                     SettingsRow(
                         icon = Icons.Default.AdminPanelSettings,
-                        title = "Founder & Admin Console",
-                        subtitle = "Moderation, badges, user bans, and reports",
+                        title = if (isAr) "لوحة تحكم المؤسس والإدارة" else "Founder & Admin Console",
+                        subtitle = if (isAr) "صلاحيات المراقبة وتوثيق الحسابات" else "Moderation, badges and management",
+                        iconColor = AvaGold,
                         onClick = { viewModel.navigateTo(AppScreen.FOUNDER_DASHBOARD) }
                     )
                 }
             }
 
-            // Account Actions
-            item {
-                Spacer(modifier = Modifier.height(14.dp))
-                Text(text = "Account & Privacy", color = AvaPurpleLight, fontSize = 12.sp, fontWeight = FontWeight.Bold)
-            }
+            // Authenticated User Section
+            if (user != null) {
+                item {
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Text(text = if (isAr) "الأمان وإدارة الحساب" else "Security & Account Management", color = AvaPurpleLight, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                }
 
-            item {
-                SettingsRow(
-                    icon = Icons.Default.Logout,
-                    title = stringRes("sign_out"),
-                    subtitle = user?.email ?: "",
-                    onClick = {
-                        CoroutineScope(Dispatchers.Main).launch {
-                            viewModel.repository.logout()
-                            viewModel.navigateTo(AppScreen.LOGIN)
+                item {
+                    val verified = user?.isEmailVerified == true
+                    SettingsRow(
+                        icon = Icons.Default.Check,
+                        title = if (isAr) "حالة البريد الإلكتروني" else "Email Verification Status",
+                        subtitle = if (verified) (if (isAr) "مؤكد وموثق بالكامل" else "Verified & Secure")
+                        else (if (isAr) "غير مؤكد - اضغط هنا للتحقق" else "Unverified - Tap to verify"),
+                        iconColor = if (verified) AvaSuccess else AvaGold,
+                        onClick = {
+                            if (!verified) {
+                                viewModel.navigateTo(AppScreen.EMAIL_VERIFICATION)
+                            } else {
+                                viewModel.statusMessage.value = if (isAr) "بريدك الإلكتروني موثق بالفعل" else "Your email is already verified"
+                            }
                         }
-                    }
-                )
-            }
+                    )
+                }
 
-            item {
-                SettingsRow(
-                    icon = Icons.Default.Delete,
-                    title = stringRes("delete_account"),
-                    subtitle = "Permanently remove account and data",
-                    iconColor = AvaError,
-                    onClick = { showDeleteDialog = true }
-                )
+                item {
+                    SettingsRow(
+                        icon = Icons.Default.Lock,
+                        title = if (isAr) "تغيير كلمة المرور" else "Change Password",
+                        subtitle = if (isAr) "تحديث كلمة المرور بتشفير عالي الأمان" else "Update password with cryptographic security",
+                        onClick = {
+                            changePasswordError = null
+                            currentPassword = ""
+                            newPassword = ""
+                            confirmNewPassword = ""
+                            showChangePasswordDialog = true
+                        }
+                    )
+                }
+
+                item {
+                    SettingsRow(
+                        icon = Icons.Default.Logout,
+                        title = stringRes("sign_out"),
+                        subtitle = user?.email ?: "",
+                        onClick = {
+                            CoroutineScope(Dispatchers.Main).launch {
+                                viewModel.repository.logout()
+                                viewModel.statusMessage.value = if (isAr) "تم تسجيل الخروج" else "Signed out"
+                                viewModel.navigateTo(AppScreen.LOGIN)
+                            }
+                        }
+                    )
+                }
+
+                item {
+                    SettingsRow(
+                        icon = Icons.Default.Delete,
+                        title = stringRes("delete_account"),
+                        subtitle = if (isAr) "حذف الحساب وجميع البيانات نهائياً" else "Permanently remove account and data",
+                        iconColor = AvaError,
+                        onClick = { showDeleteDialog = true }
+                    )
+                }
             }
         }
+    }
+
+    // Change Password Dialog
+    if (showChangePasswordDialog) {
+        AlertDialog(
+            onDismissRequest = { showChangePasswordDialog = false },
+            title = { Text(text = if (isAr) "تغيير كلمة المرور" else "Change Password", color = AvaTextPrimary, fontWeight = FontWeight.Bold) },
+            text = {
+                Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    OutlinedTextField(
+                        value = currentPassword,
+                        onValueChange = { currentPassword = it; changePasswordError = null },
+                        label = { Text(if (isAr) "كلمة المرور الحالية" else "Current Password") },
+                        singleLine = true,
+                        visualTransformation = PasswordVisualTransformation(),
+                        colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = AvaPurplePrimary, unfocusedBorderColor = AvaCardBorder)
+                    )
+                    OutlinedTextField(
+                        value = newPassword,
+                        onValueChange = { newPassword = it; changePasswordError = null },
+                        label = { Text(if (isAr) "كلمة المرور الجديدة" else "New Password") },
+                        singleLine = true,
+                        visualTransformation = PasswordVisualTransformation(),
+                        colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = AvaPurplePrimary, unfocusedBorderColor = AvaCardBorder)
+                    )
+                    OutlinedTextField(
+                        value = confirmNewPassword,
+                        onValueChange = { confirmNewPassword = it; changePasswordError = null },
+                        label = { Text(if (isAr) "تأكيد كلمة المرور الجديدة" else "Confirm New Password") },
+                        singleLine = true,
+                        visualTransformation = PasswordVisualTransformation(),
+                        colors = OutlinedTextFieldDefaults.colors(focusedBorderColor = AvaPurplePrimary, unfocusedBorderColor = AvaCardBorder)
+                    )
+                    if (changePasswordError != null) {
+                        Text(text = changePasswordError ?: "", color = AvaError, fontSize = 12.sp)
+                    }
+                }
+            },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        if (currentPassword.isBlank() || newPassword.isBlank()) {
+                            val msg = if (isAr) "يرجى ملء جميع الحقول" else "Please fill all fields"
+                            changePasswordError = msg
+                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                            return@Button
+                        }
+                        if (newPassword.length < 6) {
+                            val msg = if (isAr) "كلمة المرور يجب أن لا تقل عن 6 أحرف" else "Password must be at least 6 characters"
+                            changePasswordError = msg
+                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                            return@Button
+                        }
+                        if (newPassword != confirmNewPassword) {
+                            val msg = if (isAr) "كلمتا المرور غير متطابقتين" else "Passwords do not match"
+                            changePasswordError = msg
+                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                            return@Button
+                        }
+                        isChangingPassword = true
+                        CoroutineScope(Dispatchers.Main).launch {
+                            val res = viewModel.repository.changePassword(currentPassword, newPassword)
+                            isChangingPassword = false
+                            if (res.isSuccess) {
+                                showChangePasswordDialog = false
+                                viewModel.statusMessage.value = if (isAr) "تم تغيير كلمة المرور بنجاح" else "Password changed successfully"
+                            } else {
+                                changePasswordError = res.exceptionOrNull()?.message ?: "فشل تغيير كلمة المرور"
+                            }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = AvaPurplePrimary)
+                ) {
+                    Text(if (isAr) "تأكيد التغيير" else "Update Password", color = Color.White)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showChangePasswordDialog = false }) {
+                    Text(text = stringRes("cancel"), color = AvaTextSecondary)
+                }
+            },
+            containerColor = AvaCard,
+            shape = RoundedCornerShape(16.dp)
+        )
     }
 
     if (showDeleteDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },
-            title = { Text(text = "Delete Account?", color = AvaTextPrimary, fontWeight = FontWeight.Bold) },
-            text = { Text(text = "This will permanently erase your profile, designs, and characters. This action cannot be undone.", color = AvaTextSecondary) },
+            title = { Text(text = if (isAr) "حذف الحساب نهائياً؟" else "Delete Account Permanently?", color = AvaError, fontWeight = FontWeight.Bold) },
+            text = {
+                Text(
+                    text = if (isAr)
+                        "سيؤدي هذا الإجراء إلى حذف حسابك ومشاريعك وأعمالك المحفوظة نهائياً من قاعدة البيانات. لن تتمكن من استرجاع البيانات بعد ذلك."
+                    else
+                        "This will permanently erase your profile and all saved projects from the database. This action cannot be undone.",
+                    color = AvaTextSecondary
+                )
+            },
             confirmButton = {
                 Button(
                     onClick = {
-                        user?.let {
-                            CoroutineScope(Dispatchers.Main).launch {
-                                viewModel.repository.logout()
-                                showDeleteDialog = false
-                                viewModel.navigateTo(AppScreen.LOGIN)
-                            }
+                        CoroutineScope(Dispatchers.Main).launch {
+                            viewModel.repository.deleteAccount()
+                            showDeleteDialog = false
+                            viewModel.statusMessage.value = if (isAr) "تم حذف الحساب بنجاح" else "Account deleted"
+                            viewModel.navigateTo(AppScreen.LOGIN)
                         }
                     },
                     colors = ButtonDefaults.buttonColors(containerColor = AvaError)
                 ) {
-                    Text("Delete Account", color = Color.White)
+                    Text(if (isAr) "نعم، حذف الحساب" else "Yes, Delete Account", color = Color.White)
                 }
             },
             dismissButton = {
